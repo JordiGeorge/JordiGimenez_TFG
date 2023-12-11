@@ -32,33 +32,28 @@ public class Player : MonoBehaviour
 
     public void ChangeCameraForward()
     {
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{ 
-            //Switch Camera
-            if(CameraSwitcher.IsActiveCamera(cam01))
-            {
-                CameraSwitcher.SwitchCamera(cam02);
-            }
-            else if (CameraSwitcher.IsActiveCamera(cam02))
-            {
-                CameraSwitcher.SwitchCamera(cam03);
-            }
-            else if (CameraSwitcher.IsActiveCamera(cam03))
-            {
-                CameraSwitcher.SwitchCamera(cam04);
-            }
-            else if (CameraSwitcher.IsActiveCamera(cam04))
-            {
-                CameraSwitcher.SwitchCamera(cam05);
-            }
-
-        //}
+        //Switch Camera
+        if (CameraSwitcher.IsActiveCamera(cam01))
+        {
+            CameraSwitcher.SwitchCamera(cam02);
+        }
+        else if (CameraSwitcher.IsActiveCamera(cam02))
+        {
+            CameraSwitcher.SwitchCamera(cam03);
+        }
+        else if (CameraSwitcher.IsActiveCamera(cam03))
+        {
+            CameraSwitcher.SwitchCamera(cam04);
+        }
+        else if (CameraSwitcher.IsActiveCamera(cam04))
+        {
+            CameraSwitcher.SwitchCamera(cam05);
+        }
     }
 
     public void ChangeCameraBackward()
     {
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{ 
+       
         //Switch Camera
         if (CameraSwitcher.IsActiveCamera(cam05))
         {
@@ -76,8 +71,5 @@ public class Player : MonoBehaviour
         {
             CameraSwitcher.SwitchCamera(cam01);
         }
-
-        //}
     }
-
 }

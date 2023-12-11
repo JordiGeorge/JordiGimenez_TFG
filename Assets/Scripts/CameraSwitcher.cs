@@ -40,5 +40,4 @@ public static class CameraSwitcher
         Debug.Log("Camera unregistered: " + camera);
     }
 
-
 }
