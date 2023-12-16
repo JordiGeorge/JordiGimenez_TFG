@@ -33,7 +33,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_Unlit_Additive
+  m_Name: Unlit_Additive_Blue_mat
   m_Shader: {fileID: -6465566751694194690, guid: e69848c108e7a48deac360dc9978c542,
     type: 3}
   m_Parent: {fileID: 0}
@@ -73,5 +73,5 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 2.828427, g: 0, b: 0, a: 0}
+    - _Color: {r: 0, g: 0.10452144, b: 3.776172, a: 0}
   m_BuildTextureStacks: []
