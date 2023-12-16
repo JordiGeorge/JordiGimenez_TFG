@@ -268,7 +268,7 @@ Transform:
   m_GameObject: {fileID: 12527033}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.25, y: -2, z: -12}
+  m_LocalPosition: {x: 15.54, y: -2, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2402,7 +2402,7 @@ GameObject:
   - component: {fileID: 153051347}
   - component: {fileID: 153051348}
   m_Layer: 0
-  m_Name: TCube (EventManager test)
+  m_Name: Cube (EventManager test)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4464,7 +4464,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.25, y: 0, z: -18}
+  m_LocalPosition: {x: 6.25, y: 0, z: -15.950001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5207,6 +5207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 407159444}
   - component: {fileID: 407159443}
+  - component: {fileID: 407159445}
   m_Layer: 0
   m_Name: Virtual Camera 01
   m_TagString: Untagged
@@ -5269,6 +5270,42 @@ Transform:
   - {fileID: 298314253}
   m_Father: {fileID: 1560973320}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &407159445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407159442}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 325a6a3050a061e4b8aa51386c30e8e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExcludedPropertiesInInspector:
+  - m_Script
+  m_LockStageInInspector: 
+  m_StreamingVersion: 20170927
+  m_Priority: 10
+  m_StandbyUpdate: 2
+  m_LookAt: {fileID: 0}
+  m_Follow: {fileID: 0}
+  m_AnimatedTarget: {fileID: 0}
+  m_LayerIndex: 0
+  m_ShowDebugText: 0
+  m_ChildCameras: []
+  m_Instructions: []
+  m_DefaultBlend:
+    m_Style: 1
+    m_Time: 0.5
+    m_CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  m_CustomBlends: {fileID: 0}
+  m_ParentHash: []
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -20750,7 +20787,7 @@ Transform:
   m_GameObject: {fileID: 1698233040}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.25, y: 0, z: -18}
+  m_LocalPosition: {x: 6.25, y: 0, z: -15.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
