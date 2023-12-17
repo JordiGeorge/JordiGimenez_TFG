@@ -5,82 +5,94 @@ using Cinemachine;
 
 public class PlayerCameraSwitcher : MonoBehaviour
 {
-    public List<CinemachineVirtualCamera> cameras;
-    private int currentCameraIndex = 0;
+    private GameStateManager gameStateManager; //Variable per controla els estats del joc
+    
+    public List<CinemachineVirtualCamera> cameras; //LListat de Càmeres virtuales
+    private int _currentCameraIndex = 0;
 
-    private bool canSwitch = true;
-    private float switchCooldown = 5.0f; // Temps de refredament en segons
+    private bool _canSwitch = true; //Activa o desactiva moviment
+    private const float SwitchCooldown = 5.0f; // variable de temps per la coroutine
 
     void Start()
     {
-        // Assegura't que la primera càmera (índex 0) sigui l'activa en començar
+        //Busquem i assignem component GameStateManager
+        gameStateManager = FindObjectOfType<GameStateManager>();
+        if (gameStateManager == null)
+        {
+            this.enabled = false;
+            Debug.LogError("No s'ha trobat GameStateManager!!!");
+        }
+        //Activem GameState Explortació (l'usuari pot navegar)
+        gameStateManager.SetState(GameState.Exploration);
+        
+        // La primera càmera es índex 0
         SwitchCamera(0);
     }
 
     void Update()
     {
-        if (canSwitch)
+        if (_canSwitch)
         {
-            if (currentCameraIndex == 0)
+            if (_currentCameraIndex == 0)
             {
-                // Canvia a 1 amb S o la fletxa avall quan l'índex és 0
+                // Canvia a 1 amb S o Down Arrow quan l'índex és 0
                 if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
                 {
                     SwitchCamera(1);
                 }
             }
-            else if (currentCameraIndex == 1)
+            else if (_currentCameraIndex == 1)
             {
-                // Canvia a 0 amb W o la fletxa amunt quan l'índex és 1
+                // Canvia a 0 amb W o la up Arrow quan l'índex és 1
                 if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
                 {
                     SwitchCamera(0);
                 }
-                // Canvia a la següent càmera amb D o fletxa dreta
+                // Canvia a índex de càmera 2 amb D o Right Arrow
                 else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
                 {
                     SwitchCamera(2);
                 }
-                // Salta directament a la càmera 3 amb A o fletxa esquerra
+                // Salta a la càmera 3 amb A o Left Arrow
                 else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
                 {
                     SwitchCamera(3);
                 }
             }
-            else if (currentCameraIndex == 2)
+            else if (_currentCameraIndex == 2)
             {
-                // Torna a l'índex 1 amb S o la fletxa avall
+                // Tsalta a l'índex 1 amb S o Down Arrow
                 if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
                 {
                     SwitchCamera(1);
                 }
-                // Salta directament a la càmera 3 amb A o fletxa esquerra
+                // Salta a la càmera 3 amb A o Left Arrow
                 else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
                 {
                     SwitchCamera(3);
                 }
             }
-            else if (currentCameraIndex == 3)
+            else if (_currentCameraIndex == 3)
             {
-                // Va a l'índex de càmera 4 (si existeix) amb W o fletxa amunt
-                if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) && currentCameraIndex < cameras.Count - 1)
+                // Va a l'índex de càmera 4 amb W o Up Arrow
+                if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) && _currentCameraIndex < cameras.Count - 1)
                 {
                     SwitchCamera(4);
                 }
-                // Torna a l'índex 1 amb S o la fletxa avall
+                // Torna a l'índex 1 amb S o la Down Arrow
                 else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
                 {
                     SwitchCamera(1);
                 }
-                // Canvia a la càmera 2 amb D o fletxa dreta
+                // Canvia a la càmera 2 amb D o Right Arrow
                 else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
                 {
                     SwitchCamera(2);
                 }
             }
-            else if (currentCameraIndex == 4)
+            else if (_currentCameraIndex == 4)
             {
-                // Canvia a 3 amb S o la fletxa avall quan l'índex és 4
+                // Canvia a 3 amb S o Down Arrow quan l'índex és 4
                 if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
                 {
                     SwitchCamera(3);
@@ -88,14 +100,16 @@ public class PlayerCameraSwitcher : MonoBehaviour
             }
         }
     }
-
+    
+    //Coroutine de 5 Segons d'espera per acabar transicions abans de poder canviar de nou de càmera
     IEnumerator SwitchCameraCooldown()
     {
-        canSwitch = false;
-        yield return new WaitForSeconds(switchCooldown);
-        canSwitch = true;
+        _canSwitch = false;
+        yield return new WaitForSeconds(SwitchCooldown);
+        _canSwitch = true;
     }
-
+    
+    //Mètode que permet canviar Index de la Llista de Càmeres Virtuals
     private void SwitchCamera(int index)
     {
         StartCoroutine(SwitchCameraCooldown());
@@ -104,9 +118,9 @@ public class PlayerCameraSwitcher : MonoBehaviour
             cam.Priority = (cam == cameras[index]) ? 10 : 0;
         }
 
-        // Registra en el log l'índex de la càmera actual
+        // Seguiment de l'índex de la càmera actual
         Debug.Log("Canviat a l'índex de Càmera: " + index);
 
-        currentCameraIndex = index; // Actualitza l'índex de la càmera actual
+        _currentCameraIndex = index; // Actualitza l'índex de la càmera actual
     }
 }

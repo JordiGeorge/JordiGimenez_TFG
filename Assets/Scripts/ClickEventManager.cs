@@ -7,7 +7,7 @@ public class ClickEventManager : MonoBehaviour
 
     private void Awake()
     {
-        // Initialize the UnityEvent and add a listener method to it
+        // Inicialitza l'Event i afegeix un mètode AddListener
         if (onClick == null)
             onClick = new UnityEvent();
 
@@ -16,18 +16,19 @@ public class ClickEventManager : MonoBehaviour
 
     private void OnMouseDown()
     {
-        // Invoke the UnityEvent when the GameObject is clicked
+        // Invoca l'Event quan es fa click en l'objecte (aquest requereix Collider 'Trigger')
         onClick.Invoke();
     }
 
     private void OnClickReceived()
     {
-        // Action to be taken when the GameObject is clicked
-        Debug.Log("Received Unity Event!");
+        //Acció a realitzar quan en l'objecte clickat (l'objecte requereix Collider 'Trigger')
+        Debug.Log("Missatge rebut");
 
-        // Create a sphere at the position of this GameObject
+        // Crea una esfera temporal a mode test. 
         GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        sphere.transform.position = this.transform.position;
+        sphere.transform.position = new Vector3(8,0,-6);
     }
 }
+
 

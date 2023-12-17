@@ -1,6 +1,9 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-
+// Enumeració dels diferents estats del joc
 public enum GameState
 {
     Exploration,
@@ -12,80 +15,97 @@ public enum GameState
 public class GameStateManager : MonoBehaviour
 {
     private GameState currentState;
+    private UIManager uiManager;
+
+    // Propietat per accedir a l'estat actual
+    public object CurrentState { get; set; }
 
     void Start()
     {
-        // Initialize the starting state, e.g., Exploration
-        SetState(GameState.Exploration);
+        // Inicialitza l'estat inicial, per exemple, StoryMode
+        uiManager = FindObjectOfType<UIManager>();
+        SetState(GameState.StoryMode);
     }
 
     public void SetState(GameState newState)
     {
         currentState = newState;
+        Debug.Log("GameState: " + currentState); // Seguiment dels estats del joc
 
-        // Exit logic for the current state
+        // Sortida per a l'estat actual
         switch (currentState)
         {
             case GameState.Exploration:
-                // Enable player movement, exploration interactions, etc.
+                // Activa Moviment del jugador.
                 EnableExploration();
                 break;
             case GameState.Inventory:
-                // Enable inventory UI, item examination, etc.
-                EnableInventoryAndAnalysis();
+                // Activa la UI de l'inventari, i Menu del joc
+                EnableInventory();
                 break;
             case GameState.Puzzle:
-                // Enable puzzle mechanics, interactions, etc.
+                // Lògica dels Puzzles
                 EnablePuzzle();
                 break;
             case GameState.StoryMode:
-                // Play cutscene or handle transition effects
-                StartCutsceneOrTransition();
+                // Narrativa, Cinemàtiques, transicions
+                EnableStoryMode();
                 break;
         }
 
-        // Add any additional logic needed when switching states
+        // Lògica addicional per quan es canvia d'estat
     }
-
+    
+   
     private void EnableExploration()
     {
-        // Logic for enabling exploration state
+        // Mètode per activar l'estat d'exploració
+        uiManager.explorationUI.SetActive(true);
     }
 
-    private void EnableInventoryAndAnalysis()
+    private void EnableInventory()
     {
-        // Logic for enabling inventory and analysis state
+        // Mètode per activar l'estat d'inventari i anàlisi
+        uiManager.inventoryUI.SetActive(true);
     }
 
     private void EnablePuzzle()
     {
-        // Logic for enabling puzzle state
+        //Mètode per activar els Puzzles GameState
+        uiManager.puzzleUI.SetActive(true);
     }
 
-    private void StartCutsceneOrTransition()
+    private void EnableStoryMode()
     {
-        // Logic for handling cutscenes and transitions
+        //Mètode per activar la narrativa
+        uiManager.storyModeUI.SetActive(true);
     }
 
-    // Update or other methods can be used for state-specific logic
+
+    // Actualització d'estats
     void Update()
     {
         switch (currentState)
         {
             case GameState.Exploration:
-                // Update logic for exploration
+                //Activa la navegació de l'usuari per l'escena
+                uiManager.explorationUI.SetActive(true);
                 break;
             case GameState.Inventory:
-                // Update logic for inventory and analysis
+                //Activa la UI del MenuInventari
+                uiManager.inventoryUI.SetActive(true);
                 break;
             case GameState.Puzzle:
-                // Update logic for puzzles
+                //Activa la UI dels Puzzles GameState
+                uiManager.puzzleUI.SetActive(true);
                 break;
             case GameState.StoryMode:
-                // Update logic for cutscene or transition
+                //Activa la UI narrativa
+                uiManager.storyModeUI.SetActive(true);
                 break;
         }
     }
+    
 }
 
 
