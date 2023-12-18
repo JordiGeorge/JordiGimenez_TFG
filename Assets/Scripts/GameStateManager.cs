@@ -18,7 +18,11 @@ public class GameStateManager : MonoBehaviour
     private UIManager uiManager;
 
     // Propietat per accedir a l'estat actual
-    public object CurrentState { get; set; }
+    public GameState CurrentState
+    {
+        get { return currentState; }
+        set { SetState(value); }
+    }
 
     void Start()
     {

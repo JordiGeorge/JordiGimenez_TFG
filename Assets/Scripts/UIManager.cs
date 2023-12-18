@@ -29,35 +29,31 @@ public class UIManager : MonoBehaviour
         GameStateSwitcherUI(); // Actualitza la UI a cada fotograma
     }
 
-    // ReSharper disable Unity.PerformanceAnalysis
+    // Canvi de UI segons estat
     private void GameStateSwitcherUI()
     {
-        if (gameStateManager == null) return; // Control, Retorna si no es troba gameStateManager
+        if (gameStateManager == null) return;
 
-        // Tots els elements de la UI desactivats per defecte
+        // Tots els UI elements desactivats per defecte
         explorationUI.SetActive(false);
         inventoryUI.SetActive(false);
         puzzleUI.SetActive(false);
         storyModeUI.SetActive(false);
 
-        // Activa les diferents UI en funció del GameState actual
+        // Activa les diferents UI segons GameState
         switch (gameStateManager.CurrentState)
         {
             case GameState.Exploration:
-                gameStateManager.SetState(GameState.Exploration); // GameState Exploració
-                explorationUI.SetActive(true); // Activa la UI d'Exploració
+                explorationUI.SetActive(true);
                 break;
             case GameState.Inventory:
-                gameStateManager.SetState(GameState.Inventory); // GameState a Inventari
-                inventoryUI.SetActive(true); // Activa la UI d'Inventari
+                inventoryUI.SetActive(true);
                 break;
             case GameState.Puzzle:
-                gameStateManager.SetState(GameState.Puzzle); // GameState a Puzzle
-                puzzleUI.SetActive(true); // Activa la UI de Puzzle
+                puzzleUI.SetActive(true);
                 break;
             case GameState.StoryMode:
-                gameStateManager.SetState(GameState.StoryMode); // GameState StoryMode
-                storyModeUI.SetActive(true); // Activa la UI del StoryMode
+                storyModeUI.SetActive(true);
                 break;
         }
     }
