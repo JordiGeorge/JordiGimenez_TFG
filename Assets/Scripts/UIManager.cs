@@ -10,29 +10,22 @@ public class UIManager : MonoBehaviour
     public GameObject puzzleUI;
     public GameObject storyModeUI;
 
-    private GameStateManager gameStateManager; //Variable per controlar els GameStates del joc
+    private GameStateManager _gameStateManager; //Variable per controlar els GameStates del joc
 
     void Start()
     {
-        gameStateManager = FindObjectOfType<GameStateManager>();
-        if (gameStateManager == null)
+        _gameStateManager = FindObjectOfType<GameStateManager>();
+        
+        if (_gameStateManager == null)
         {
             Debug.LogError("No existeix cap GameStateManager!!!"); // Comprobació de GameStateManager a l'escena
         }
-
-        GameStateSwitcherUI(); // Actualitza la UI d'inici
-    }
-
-    void Update()
-    {
-        // Opcionalment, comprova els canvis d'estat aquí si poden ocórrer fora del control de UIManager
-        GameStateSwitcherUI(); // Actualitza la UI a cada fotograma
     }
 
     // Canvi de UI segons estat
-    private void GameStateSwitcherUI()
+    public void GameStateSwitcherUI()
     {
-        if (gameStateManager == null) return;
+        if (_gameStateManager == null) return;
 
         // Tots els UI elements desactivats per defecte
         explorationUI.SetActive(false);
@@ -41,7 +34,7 @@ public class UIManager : MonoBehaviour
         storyModeUI.SetActive(false);
 
         // Activa les diferents UI segons GameState
-        switch (gameStateManager.CurrentState)
+        switch (_gameStateManager.CurrentState)
         {
             case GameState.Exploration:
                 explorationUI.SetActive(true);

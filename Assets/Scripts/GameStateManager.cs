@@ -14,30 +14,30 @@ public enum GameState
 
 public class GameStateManager : MonoBehaviour
 {
-    private GameState currentState;
-    private UIManager uiManager;
+    private GameState _currentState;
+    private UIManager _uiManager;
 
     // Propietat per accedir a l'estat actual
     public GameState CurrentState
     {
-        get { return currentState; }
+        get { return _currentState; }
         set { SetState(value); }
     }
 
     void Start()
     {
         // Inicialitza l'estat inicial, per exemple, StoryMode
-        uiManager = FindObjectOfType<UIManager>();
+        _uiManager = FindObjectOfType<UIManager>();
         SetState(GameState.StoryMode);
     }
 
     public void SetState(GameState newState)
     {
-        currentState = newState;
-        Debug.Log("GameState: " + currentState); // Seguiment dels estats del joc
+        _currentState = newState;
+        Debug.Log("GameState: " + _currentState); // Seguiment dels estats del joc
 
         // Sortida per a l'estat actual
-        switch (currentState)
+        switch (_currentState)
         {
             case GameState.Exploration:
                 // Activa Moviment del jugador.
@@ -64,48 +64,48 @@ public class GameStateManager : MonoBehaviour
     private void EnableExploration()
     {
         // Mètode per activar l'estat d'exploració
-        uiManager.explorationUI.SetActive(true);
+        //_uiManager.GameStateSwitcherUI();
     }
 
     private void EnableInventory()
     {
         // Mètode per activar l'estat d'inventari i anàlisi
-        uiManager.inventoryUI.SetActive(true);
+        //_uiManager.GameStateSwitcherUI();
     }
 
     private void EnablePuzzle()
     {
         //Mètode per activar els Puzzles GameState
-        uiManager.puzzleUI.SetActive(true);
+        //_uiManager.GameStateSwitcherUI();
     }
 
     private void EnableStoryMode()
     {
         //Mètode per activar la narrativa
-        uiManager.storyModeUI.SetActive(true);
+        //_uiManager.GameStateSwitcherUI();
     }
 
 
     // Actualització d'estats
     void Update()
     {
-        switch (currentState)
+        switch (_currentState)
         {
             case GameState.Exploration:
                 //Activa la navegació de l'usuari per l'escena
-                uiManager.explorationUI.SetActive(true);
+                _uiManager.GameStateSwitcherUI();
                 break;
             case GameState.Inventory:
                 //Activa la UI del MenuInventari
-                uiManager.inventoryUI.SetActive(true);
+                _uiManager.GameStateSwitcherUI();
                 break;
             case GameState.Puzzle:
                 //Activa la UI dels Puzzles GameState
-                uiManager.puzzleUI.SetActive(true);
+                _uiManager.GameStateSwitcherUI();
                 break;
             case GameState.StoryMode:
                 //Activa la UI narrativa
-                uiManager.storyModeUI.SetActive(true);
+                _uiManager.GameStateSwitcherUI();
                 break;
         }
     }

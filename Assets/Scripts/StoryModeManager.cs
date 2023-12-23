@@ -6,6 +6,18 @@ public class StoryModeManager : MonoBehaviour
     private GameStateManager gameStateManager; //Variable per controlar estats del joc
     public PlayerCameraSwitcher playerControl; //Activa o desactiva capaciat de navegació
     
+    void Start()
+    {
+        gameStateManager = FindObjectOfType<GameStateManager>();
+        
+        // Comprova si el GameStateManager es troba en l'escena
+        if (gameStateManager == null)
+        {
+            Debug.LogError("No hi ha GameStateManage!!!r");
+        }
+        
+    }
+    
     // Mètode per entrar a GameState StoryMode
     public void EnterStoryMode()
     {
