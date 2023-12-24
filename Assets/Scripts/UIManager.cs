@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,11 +11,17 @@ public class UIManager : MonoBehaviour
     public GameObject puzzleUI;
     public GameObject storyModeUI;
 
-    private GameStateManager _gameStateManager; //Variable per controlar els GameStates del joc
+    [SerializeField] private GameStateManager _gameStateManager; //Variable per controlar els GameStates del joc
+
+    
+    private void Awake()
+    {
+        _gameStateManager = FindObjectOfType<GameStateManager>();
+    }
 
     void Start()
     {
-        _gameStateManager = FindObjectOfType<GameStateManager>();
+        //_gameStateManager = FindObjectOfType<GameStateManager>();
         
         if (_gameStateManager == null)
         {

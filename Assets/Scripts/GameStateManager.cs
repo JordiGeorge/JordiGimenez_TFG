@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 // Enumeració dels diferents estats del joc
 public enum GameState
@@ -15,7 +16,8 @@ public enum GameState
 public class GameStateManager : MonoBehaviour
 {
     private GameState _currentState;
-    private UIManager _uiManager;
+    [SerializeField] private UIManager _uiManager;
+    public PlayableDirector _storyModeTimeline;
 
     // Propietat per accedir a l'estat actual
     public GameState CurrentState
@@ -23,11 +25,17 @@ public class GameStateManager : MonoBehaviour
         get { return _currentState; }
         set { SetState(value); }
     }
+    
+    private void Awake()
+    {
+        _uiManager = GetComponent<UIManager>();
+        _storyModeTimeline = GetComponent<PlayableDirector>();
+
+    }
 
     void Start()
     {
-        // Inicialitza l'estat inicial, per exemple, StoryMode
-        _uiManager = FindObjectOfType<UIManager>();
+        //_storyModeTimeline.GetComponent();
         SetState(GameState.StoryMode);
     }
 
@@ -64,25 +72,24 @@ public class GameStateManager : MonoBehaviour
     private void EnableExploration()
     {
         // Mètode per activar l'estat d'exploració
-        //_uiManager.GameStateSwitcherUI();
+
     }
 
     private void EnableInventory()
     {
         // Mètode per activar l'estat d'inventari i anàlisi
-        //_uiManager.GameStateSwitcherUI();
+
     }
 
     private void EnablePuzzle()
     {
         //Mètode per activar els Puzzles GameState
-        //_uiManager.GameStateSwitcherUI();
     }
 
     private void EnableStoryMode()
     {
         //Mètode per activar la narrativa
-        //_uiManager.GameStateSwitcherUI();
+        _storyModeTimeline.Play(); //Activem Playable de Timeline
     }
 
 

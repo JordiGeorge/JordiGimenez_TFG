@@ -2,21 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.Playables;
 
 public class PlayerCameraSwitcher : MonoBehaviour
 {
-    private GameStateManager gameStateManager; //Variable per controla els estats del joc
-    
+    [SerializeField] private GameStateManager gameStateManager; //Variable per controlar els GameStates del joc
+
     public List<CinemachineVirtualCamera> cameras; //LListat de Càmeres virtuales
     private int _currentCameraIndex = 0;
 
     private bool _canSwitch = true; //Activa o desactiva moviment
     private const float SwitchCooldown = 5.0f; // variable de temps per la coroutine
-
-    void Start()
+    
+    private void Awake()
     {
         //Busquem i assignem component GameStateManager
         gameStateManager = FindObjectOfType<GameStateManager>();
+    }
+
+    void Start()
+    {
         if (gameStateManager == null)
         {
             this.enabled = false;

@@ -1,17 +1,22 @@
 using UnityEngine;
+using UnityEngine.Playables;
 
 //Aquesta classe esta Work in Progress
 public class StoryModeManager : MonoBehaviour
 {
-    private GameStateManager gameStateManager; //Variable per controlar estats del joc
-    public PlayerCameraSwitcher playerControl; //Activa o desactiva capaciat de navegació
-    
+    private GameStateManager _gameStateManager; //Variable per controlar estats del joc
+    private PlayerCameraSwitcher _playerControl; //Activa o desactiva capaciat de navegació
+
+    void Awake()
+    {
+        _gameStateManager = FindObjectOfType<GameStateManager>();
+        _playerControl = FindObjectOfType<PlayerCameraSwitcher>();
+    }
     void Start()
     {
-        gameStateManager = FindObjectOfType<GameStateManager>();
-        
+
         // Comprova si el GameStateManager es troba en l'escena
-        if (gameStateManager == null)
+        if (_gameStateManager == null)
         {
             Debug.LogError("No hi ha GameStateManage!!!r");
         }
@@ -21,14 +26,15 @@ public class StoryModeManager : MonoBehaviour
     // Mètode per entrar a GameState StoryMode
     public void EnterStoryMode()
     {
-        gameStateManager.SetState(GameState.StoryMode);
+        _gameStateManager.SetState(GameState.StoryMode);
+        //_storyModeTimeline.Play();
         DisablePlayerControls();
     }
 
     // Mètode per sortir de  GameState StoryMode i tornar a Exploració
     public void ExitStoryMode()
     {
-        gameStateManager.SetState(GameState.Exploration);
+        _gameStateManager.SetState(GameState.Exploration);
         EnablePlayerControls(); 
     }
 
@@ -36,12 +42,12 @@ public class StoryModeManager : MonoBehaviour
     private void DisablePlayerControls()
     {
         // La lògica per desactivar els controls del jugador va aquí
-        playerControl.enabled = false;
+        _playerControl.enabled = false;
     }
     // Mètode per activar habilitat per nevegar de l'usuri
     private void EnablePlayerControls()
     {
         // La lògica per activar els controls del jugador va aquí
-        playerControl.enabled = true;
+        _playerControl.enabled = true;
     }
 }
