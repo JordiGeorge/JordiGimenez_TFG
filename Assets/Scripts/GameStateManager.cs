@@ -17,6 +17,7 @@ public class GameStateManager : MonoBehaviour
 {
     private GameState _currentState;
     [SerializeField] private UIManager _uiManager;
+    [SerializeField] private StoryModeManager _storyManager;
     public PlayableDirector _storyModeTimeline;
 
     // Propietat per accedir a l'estat actual
@@ -29,6 +30,7 @@ public class GameStateManager : MonoBehaviour
     private void Awake()
     {
         _uiManager = GetComponent<UIManager>();
+        _storyManager = GetComponent<StoryModeManager>();
         _storyModeTimeline = GetComponent<PlayableDirector>();
 
     }
@@ -37,6 +39,7 @@ public class GameStateManager : MonoBehaviour
     {
         //_storyModeTimeline.GetComponent();
         SetState(GameState.StoryMode);
+        //_storyModeTimeline.playableAsset = _storyManager.timelineAsset;
     }
 
     public void SetState(GameState newState)
