@@ -6,8 +6,8 @@ using UnityEngine.Playables;
 
 public class PlayerCameraSwitcher : MonoBehaviour
 {
-    [SerializeField] private GameStateManager gameStateManager; //Variable per controlar els GameStates del joc
-    [SerializeField] private StoryModeManager storyModeManager; //Variable per controlar els GameStates del joc
+    private GameStateManager _gameStateManager; //Variable per controlar els GameStates del joc
+    private StoryModeManager _storyModeManager; //Variable per controlar els StoryStates del joc
 
     public List<CinemachineVirtualCamera> cameras; //LListat de Càmeres virtuales
     private int _currentCameraIndex = 0;
@@ -17,23 +17,23 @@ public class PlayerCameraSwitcher : MonoBehaviour
     
     private void Awake()
     {
-        //Busquem i assignem component GameStateManager
-        gameStateManager = FindObjectOfType<GameStateManager>();
-        storyModeManager = FindObjectOfType<StoryModeManager>();
+        //Busquem i assignem component GameStateManager i StoryModeManager
+        _gameStateManager = FindObjectOfType<GameStateManager>();
+        _storyModeManager = FindObjectOfType<StoryModeManager>();
     }
 
     void Start()
     {
-        if (gameStateManager == null)
+        if (_gameStateManager == null)
         {
             this.enabled = false;
             Debug.LogError("No s'ha trobat GameStateManager!!!");
         }
         //Activem GameState Explortació (l'usuari pot navegar)
-        gameStateManager.SetState(GameState.Exploration);
+        _gameStateManager.SetState(GameState.Exploration);
         
         //Activem Progrés de la història
-        storyModeManager.SetStoryState(StoryState.Introduction);
+        _storyModeManager.SetStoryState(StoryState.Introduction);
         
         // La primera càmera es índex 0
         SwitchCamera(0);
@@ -53,8 +53,6 @@ public class PlayerCameraSwitcher : MonoBehaviour
             }
             else if (_currentCameraIndex == 1)
             {
-                //storyModeManager.SetStoryState(StoryState.MainStreet);
-                
                 // Canvia a 0 amb W o la up Arrow quan l'índex és 1
                 if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
                 {
@@ -73,8 +71,6 @@ public class PlayerCameraSwitcher : MonoBehaviour
             }
             else if (_currentCameraIndex == 2)
             {
-                //storyModeManager.SetStoryState(StoryState.RightSideStreet);
-                
                 // Tsalta a l'índex 1 amb S o Down Arrow
                 if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
                 {
@@ -88,8 +84,6 @@ public class PlayerCameraSwitcher : MonoBehaviour
             }
             else if (_currentCameraIndex == 3)
             {
-                //storyModeManager.SetStoryState(StoryState.LeftSideStreet);
-                
                 // Va a l'índex de càmera 4 amb W o Up Arrow
                 if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) && _currentCameraIndex < cameras.Count - 1)
                 {
@@ -140,7 +134,9 @@ public class PlayerCameraSwitcher : MonoBehaviour
         Debug.Log("Canviat a l'índex de Càmera: " + index);
 
         _currentCameraIndex = index; // Actualitza l'índex de la càmera actual
+        
+        //Aprofitem funció de canvi de càmera per índex, per actualitzar l'estat de la història
         StoryState stroryStateByInt = (StoryState)index; //Accedim a valor d'Enum per Índex
-        storyModeManager.SetStoryState(stroryStateByInt); //Canviem progrés de la història en base a index de càmera (Posició de jugador)
+        _storyModeManager.SetStoryState(stroryStateByInt); //Canviem progrés de la història en base a index de càmera (Posició de jugador)
     }
 }

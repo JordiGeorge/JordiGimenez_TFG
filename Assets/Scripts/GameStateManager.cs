@@ -16,8 +16,10 @@ public enum GameState
 public class GameStateManager : MonoBehaviour
 {
     private GameState _currentState;
-    [SerializeField] private UIManager _uiManager;
-    [SerializeField] private StoryModeManager _storyManager;
+    private UIManager _uiManager;
+    private StoryModeManager _storyManager;
+    
+    //Proves amb Timeline
     public PlayableDirector _storyModeTimeline;
 
     // Propietat per accedir a l'estat actual
@@ -31,15 +33,17 @@ public class GameStateManager : MonoBehaviour
     {
         _uiManager = GetComponent<UIManager>();
         _storyManager = GetComponent<StoryModeManager>();
-        _storyModeTimeline = GetComponent<PlayableDirector>();
-
+        
+       _storyModeTimeline = GetComponent<PlayableDirector>();//Proves amb Timeline
     }
 
     void Start()
     {
         //_storyModeTimeline.GetComponent();
         SetState(GameState.StoryMode);
-        //_storyModeTimeline.playableAsset = _storyManager.timelineAsset;
+        _storyManager.SetStoryState(StoryState.Introduction);
+        
+        //_storyModeTimeline.playableAsset = _storyManager.timelineAsset; //Proves amb Timeline
     }
 
     public void SetState(GameState newState)
@@ -92,7 +96,7 @@ public class GameStateManager : MonoBehaviour
     private void EnableStoryMode()
     {
         //Mètode per activar la narrativa
-        _storyModeTimeline.Play(); //Activem Playable de Timeline
+        _storyModeTimeline.Play(); //Activem Playable de Timeline (Proves amb Timeline)
     }
 
 

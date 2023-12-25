@@ -10,22 +10,33 @@ public class UIManager : MonoBehaviour
     public GameObject inventoryUI;
     public GameObject puzzleUI;
     public GameObject storyModeUI;
+    public GameObject[] storyModeStates;
 
-    [SerializeField] private GameStateManager _gameStateManager; //Variable per controlar els GameStates del joc
-
+    GameStateManager _gameStateManager; //Variable per controlar els GameStates del joc
     
     private void Awake()
     {
-        _gameStateManager = FindObjectOfType<GameStateManager>();
-    }
-
-    void Start()
-    {
-        //_gameStateManager = FindObjectOfType<GameStateManager>();
-        
         if (_gameStateManager == null)
         {
             Debug.LogError("No existeix cap GameStateManager!!!"); // Comprobació de GameStateManager a l'escena
+        }
+        
+        _gameStateManager = GetComponent<GameStateManager>(); //Assignem component
+        
+        if (storyModeUI != null)
+        {
+            //Nova llista per buscar els fills del GameObject storyModeUI;
+            List<GameObject> children = new List<GameObject>();
+            
+            foreach (Transform child in storyModeUI.transform)
+            {
+                children.Add(child.gameObject); //Afegim a la llista els GameObjects trobats en el loop
+            }
+            storyModeStates = children.ToArray();  //Afegim elements de la llista a l'array storyModeStates
+        }
+        else
+        {
+            Debug.LogError("storyModeUI no esta assignat!"); //Control
         }
     }
 
@@ -55,6 +66,15 @@ public class UIManager : MonoBehaviour
             case GameState.StoryMode:
                 storyModeUI.SetActive(true);
                 break;
+        }
+    }
+    
+    // Mètode que en permet activar i desactivar GameObjects dins de StoreModeUI
+    public void StoryStateUISwitcher(StoryState state)
+    {
+        foreach (GameObject uiState in storyModeStates)
+        {
+            uiState.SetActive(uiState.name == state.ToString()); //Activem GameObject corresponent a la UI En funció del nom Enum StoryState
         }
     }
 }
