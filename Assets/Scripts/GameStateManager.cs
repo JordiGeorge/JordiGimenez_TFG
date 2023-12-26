@@ -18,6 +18,7 @@ public class GameStateManager : MonoBehaviour
     private GameState _currentState;
     private UIManager _uiManager;
     private StoryModeManager _storyManager;
+    private DevelopUI _developUI;
     
     //Proves amb Timeline
     public PlayableDirector _storyModeTimeline;
@@ -33,6 +34,7 @@ public class GameStateManager : MonoBehaviour
     {
         _uiManager = GetComponent<UIManager>();
         _storyManager = GetComponent<StoryModeManager>();
+        _developUI = GetComponent<DevelopUI>();
         
        _storyModeTimeline = GetComponent<PlayableDirector>();//Proves amb Timeline
     }
@@ -98,8 +100,7 @@ public class GameStateManager : MonoBehaviour
         //Mètode per activar la narrativa
         _storyModeTimeline.Play(); //Activem Playable de Timeline (Proves amb Timeline)
     }
-
-
+    
     // Actualització d'estats
     void Update()
     {
@@ -108,22 +109,25 @@ public class GameStateManager : MonoBehaviour
             case GameState.Exploration:
                 //Activa la navegació de l'usuari per l'escena
                 _uiManager.GameStateSwitcherUI();
+                _developUI.InfoDevelopUI();
                 break;
             case GameState.Inventory:
                 //Activa la UI del MenuInventari
                 _uiManager.GameStateSwitcherUI();
+                _developUI.InfoDevelopUI();
                 break;
             case GameState.Puzzle:
                 //Activa la UI dels Puzzles GameState
                 _uiManager.GameStateSwitcherUI();
+                _developUI.InfoDevelopUI();
                 break;
             case GameState.StoryMode:
                 //Activa la UI narrativa
                 _uiManager.GameStateSwitcherUI();
+                _developUI.InfoDevelopUI();
                 break;
         }
     }
-    
 }
 
 

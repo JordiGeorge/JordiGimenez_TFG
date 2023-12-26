@@ -12,7 +12,7 @@ public class MenuInventoryManager : MonoBehaviour
 
     void Start()
     {
-        _gameStateManager = FindObjectOfType<GameStateManager>();
+        _gameStateManager = GetComponent<GameStateManager>();
         
         // Comprova si el GameStateManager es troba en l'escena
         if (_gameStateManager == null)

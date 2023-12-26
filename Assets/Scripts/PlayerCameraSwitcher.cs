@@ -8,6 +8,17 @@ public class PlayerCameraSwitcher : MonoBehaviour
 {
     private GameStateManager _gameStateManager; //Variable per controlar els GameStates del joc
     private StoryModeManager _storyModeManager; //Variable per controlar els StoryStates del joc
+    
+    //Seguiment opcions càmeres disponibles en UI
+    public GameObject cameraDownUI;
+    public GameObject cameraUpUI;
+    public GameObject cameraRightUI;
+    public GameObject cameraLeftUI;
+    
+    private UI_Button_State buttonStateDown;
+    private UI_Button_State buttonStateUp;
+    private UI_Button_State buttonStateRight;
+    private UI_Button_State buttonStateLeft;
 
     public List<CinemachineVirtualCamera> cameras; //LListat de Càmeres virtuales
     private int _currentCameraIndex = 0;
@@ -24,6 +35,18 @@ public class PlayerCameraSwitcher : MonoBehaviour
 
     void Start()
     {
+        //Assignació de component d'elements grafics UI
+        buttonStateDown = cameraDownUI.GetComponent<UI_Button_State>();
+        buttonStateUp = cameraUpUI.GetComponent<UI_Button_State>();
+        buttonStateRight = cameraRightUI.GetComponent<UI_Button_State>();
+        buttonStateLeft = cameraLeftUI.GetComponent<UI_Button_State>();
+        
+        /*buttonStateDown.EnabledButton();
+        buttonStateUp.DisabledButton();
+        buttonStateRight.DisabledButton();
+        buttonStateLeft.DisabledButton();*/
+
+        
         if (_gameStateManager == null)
         {
             this.enabled = false;
@@ -45,6 +68,11 @@ public class PlayerCameraSwitcher : MonoBehaviour
         {
             if (_currentCameraIndex == 0)
             {
+                /*buttonStateDown.EnabledButton();
+                buttonStateUp.DisabledButton();
+                buttonStateRight.DisabledButton();
+                buttonStateLeft.DisabledButton();*/
+                
                 // Canvia a 1 amb S o Down Arrow quan l'índex és 0
                 if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
                 {
@@ -53,6 +81,11 @@ public class PlayerCameraSwitcher : MonoBehaviour
             }
             else if (_currentCameraIndex == 1)
             {
+                /*buttonStateDown.DisabledButton();
+                buttonStateUp.EnabledButton();
+                buttonStateRight.EnabledButton();
+                buttonStateLeft.EnabledButton();*/
+                
                 // Canvia a 0 amb W o la up Arrow quan l'índex és 1
                 if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
                 {
@@ -71,6 +104,11 @@ public class PlayerCameraSwitcher : MonoBehaviour
             }
             else if (_currentCameraIndex == 2)
             {
+                /*cameraDownUI.EnabledButton();
+                cameraUpUI.DisabledButton();
+                cameraRightUI.DisabledButton();
+                cameraLeftUI.EnabledButton();*/
+                
                 // Tsalta a l'índex 1 amb S o Down Arrow
                 if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
                 {
@@ -84,6 +122,11 @@ public class PlayerCameraSwitcher : MonoBehaviour
             }
             else if (_currentCameraIndex == 3)
             {
+                /*cameraDownUI.EnabledButton();
+                cameraUpUI.DisabledButton();
+                cameraRightUI.EnabledButton();
+                cameraLeftUI.DisabledButton();*/
+                
                 // Va a l'índex de càmera 4 amb W o Up Arrow
                 if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) && _currentCameraIndex < cameras.Count - 1)
                 {
@@ -102,7 +145,10 @@ public class PlayerCameraSwitcher : MonoBehaviour
             }
             else if (_currentCameraIndex == 4)
             {
-                //storyModeManager.SetStoryState(StoryState.Alley);
+                /*cameraDownUI.EnabledButton();
+                cameraUpUI.DisabledButton();
+                cameraRightUI.DisabledButton();
+                cameraLeftUI.DisabledButton();*/
                 
                 // Canvia a 3 amb S o Down Arrow quan l'índex és 4
                 if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
