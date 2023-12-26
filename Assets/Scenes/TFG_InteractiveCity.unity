@@ -305,7 +305,7 @@ MonoBehaviour:
     LensShift: {x: 0, y: 0}
     GateFit: 2
     FocusDistance: 10
-    m_SensorSize: {x: 36, y: 24}
+    m_SensorSize: {x: 1, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -6810,7 +6810,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 495943819}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -17876,15 +17876,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.50589454, g: 1, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.7882353}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 57d72c4e60a184f87b36d1cd2ea8b4bf, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -19552,6 +19552,10 @@ MonoBehaviour:
   devGameStateUI: {fileID: 1159487019}
   devStoryStateUI: {fileID: 1271902680}
   devLocationUI: {fileID: 516265317}
+  cameraDownUI: {fileID: 495943819}
+  cameraUpUI: {fileID: 247556573}
+  cameraRightUI: {fileID: 210688926}
+  cameraLeftUI: {fileID: 286511449}
 --- !u!114 &1312137478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21956,10 +21960,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 604dc1224a330b940a4676bc7a2d8cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraDownUI: {fileID: 495943819}
-  cameraUpUI: {fileID: 247556573}
-  cameraRightUI: {fileID: 210688926}
-  cameraLeftUI: {fileID: 286511449}
   cameras:
   - {fileID: 1698233042}
   - {fileID: 407159443}

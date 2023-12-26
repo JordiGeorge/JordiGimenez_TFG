@@ -21,9 +21,25 @@ public class DevelopUI : MonoBehaviour
     private string gameStateText; // Variable de tipus string per a canvi de text
     private TextMeshProUGUI devLocationTMP; // Variable de tipus TextMeshProUGUI
     private string locationText; // Variable de tipus string per a canvi de text
-
+    
+    //Seguiment opcions càmeres disponibles en UI
+    public GameObject cameraDownUI;
+    public GameObject cameraUpUI;
+    public GameObject cameraRightUI;
+    public GameObject cameraLeftUI;
+    
+    private UI_Button_State buttonStateDown;
+    private UI_Button_State buttonStateUp;
+    private UI_Button_State buttonStateRight;
+    private UI_Button_State buttonStateLeft;
+    
     void Start()
     {
+        // Comprova si el GameStateManager o StoryModeManageres troba en l'escena
+        if (_gameStateManager == null || _storyStateManager == null)
+        {
+            Debug.LogError("No hi ha GameStateManager o StoryMode Manager!!!");
+        }
         _gameStateManager = GetComponent<GameStateManager>();
         _storyStateManager = GetComponent<StoryModeManager>();
 
@@ -36,11 +52,15 @@ public class DevelopUI : MonoBehaviour
         devLocationTMP = devLocationUI.GetComponent<TextMeshProUGUI>();
         devLocationTMP.text = locationText;
         
-        // Comprova si el GameStateManager o StoryModeManageres troba en l'escena
-        if (_gameStateManager == null || _storyStateManager == null)
-        {
-            Debug.LogError("No hi ha GameStateManage!!!r");
-        }
+        buttonStateDown = cameraDownUI.GetComponent<UI_Button_State>();
+        buttonStateUp = cameraUpUI.GetComponent<UI_Button_State>();
+        buttonStateRight = cameraRightUI.GetComponent<UI_Button_State>();
+        buttonStateLeft = cameraLeftUI.GetComponent<UI_Button_State>();
+        
+        buttonStateDown.EnabledButton();
+        buttonStateUp.DisabledButton();
+        buttonStateRight.DisabledButton();
+        buttonStateLeft.DisabledButton();
     }
     
     public void InfoDevelopUI()
@@ -63,30 +83,50 @@ public class DevelopUI : MonoBehaviour
                         devStoryTMP.text = storyStateText;
                         locationText = "EXT.NIT: Els Terrats";
                         devLocationTMP.text = locationText;
+                        buttonStateDown.EnabledButton();
+                        buttonStateUp.DisabledButton();
+                        buttonStateRight.DisabledButton();
+                        buttonStateLeft.DisabledButton();
                         break;
                     case StoryState.MainStreet:
                         storyStateText = "La targeta de visita" ;
                         devStoryTMP.text = storyStateText;
                         locationText = "EXT.NIT: Carrer Principal(1)";
                         devLocationTMP.text = locationText;
+                        buttonStateDown.DisabledButton();
+                        buttonStateUp.EnabledButton();
+                        buttonStateRight.EnabledButton();
+                        buttonStateLeft.EnabledButton();
                         break;
                     case StoryState.RightSideStreet:
                         storyStateText = "La Llibrería";
                         devStoryTMP.text = storyStateText;
                         locationText = "EXT.NIT: Carrer Principal(2)";
                         devLocationTMP.text = locationText;
+                        buttonStateDown.EnabledButton();
+                        buttonStateUp.DisabledButton();
+                        buttonStateRight.DisabledButton();
+                        buttonStateLeft.EnabledButton();
                         break;
                     case StoryState.LeftSideStreet:
                         storyStateText = "Entrada al carreró fosc.";
                         devStoryTMP.text = storyStateText;
                         locationText = "EXT.NIT: Carrer Principal(3).";
                         devLocationTMP.text = locationText;
+                        buttonStateDown.EnabledButton();
+                        buttonStateUp.EnabledButton();
+                        buttonStateRight.EnabledButton();
+                        buttonStateLeft.DisabledButton();
                         break;
                     case StoryState.Alley:
                         storyStateText = "Porta misteriosa";
                         devStoryTMP.text = storyStateText;
                         locationText = "EXT.NIT: Carreró.";
                         devLocationTMP.text = locationText;
+                        buttonStateDown.EnabledButton();
+                        buttonStateUp.DisabledButton();
+                        buttonStateRight.DisabledButton();
+                        buttonStateLeft.DisabledButton();
                         break;
                     case StoryState.ToBeContinued:
                         storyStateText = "Continuará al  Capítol 4. " + "\"Por a la foscor\"" ;
@@ -107,7 +147,5 @@ public class DevelopUI : MonoBehaviour
                 devGameStateTMP.text = gameStateText;
                 break;
         }
-        
     }
-    
 }
