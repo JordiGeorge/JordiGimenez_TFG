@@ -7,8 +7,8 @@ public class MenuInventoryManager : MonoBehaviour
     //Variable de GameState per poder controlar els stats del joc 
     private GameStateManager _gameStateManager;
     
-    [SerializeField] private TextMeshProUGUI textToChange; // Variable de tipus TextMeshProUGUI
-    [SerializeField] private string newText; // Variable de tipus string per a canvi de text
+    private TextMeshProUGUI textToChange; // Variable de tipus TextMeshProUGUI
+    private string newText; // Variable de tipus string per a canvi de text
 
     void Start()
     {

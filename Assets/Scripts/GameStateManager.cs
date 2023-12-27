@@ -127,6 +127,21 @@ public class GameStateManager : MonoBehaviour
                 _developUI.InfoDevelopUI();
                 break;
         }
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            QuitGame();
+        }
+    }
+    
+    //Tanca aplicació a editor i a Build
+    public void QuitGame()
+    {
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false; // Si estás al editor
+        #else
+                Application.Quit(); // Si estás a Build
+        #endif
     }
 }
 
