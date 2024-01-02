@@ -12,7 +12,7 @@ public class PlayerCameraSwitcher : MonoBehaviour
     public List<CinemachineVirtualCamera> cameras; //LListat de Càmeres virtuales
     private int _currentCameraIndex = 0;
 
-    private bool _canSwitch = true; //Activa o desactiva moviment
+    [SerializeField] private bool _canSwitch = true; //Activa o desactiva moviment
     private const float SwitchCooldown = 5.0f; // variable de temps per la coroutine
     
     private void Awake()
@@ -24,16 +24,9 @@ public class PlayerCameraSwitcher : MonoBehaviour
 
     void Start()
     {
-        if (_gameStateManager == null)
-        {
-            this.enabled = false;
-            Debug.LogError("No s'ha trobat GameStateManager!!!");
-        }
-        //Activem GameState Explortació (l'usuari pot navegar)
-        _gameStateManager.SetState(GameState.Exploration);
-        
-        //Activem Progrés de la història
-        _storyModeManager.SetStoryState(StoryState.Introduction);
+        _gameStateManager.SetState(GameState.Navigation);
+
+        if (_gameStateManager.CurrentState != GameState.Navigation) _canSwitch = false;
         
         // La primera càmera es índex 0
         SwitchCamera(0);

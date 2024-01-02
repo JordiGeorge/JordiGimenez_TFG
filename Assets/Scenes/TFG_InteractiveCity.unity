@@ -2237,7 +2237,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 153051340}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5bdb91fd821a44a91a3a0e7912e61baa, type: 3}
   m_Name: 
@@ -20724,11 +20724,10 @@ GameObject:
   - component: {fileID: 1312137480}
   - component: {fileID: 1312137473}
   - component: {fileID: 1312137474}
-  - component: {fileID: 1312137475}
-  - component: {fileID: 1312137476}
   - component: {fileID: 1312137477}
   - component: {fileID: 1312137479}
-  - component: {fileID: 1312137478}
+  - component: {fileID: 1312137475}
+  - component: {fileID: 1312137476}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -20908,18 +20907,6 @@ MonoBehaviour:
   cameraUpUI: {fileID: 247556573}
   cameraRightUI: {fileID: 210688926}
   cameraLeftUI: {fileID: 286511449}
---- !u!114 &1312137478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1312137468}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cc91718cad9543f2ae01e887f94bcf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1312137479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23851,6 +23838,7 @@ MonoBehaviour:
   - {fileID: 12527035}
   - {fileID: 201004415}
   - {fileID: 322542581}
+  _canSwitch: 1
 --- !u!1 &1562811151
 GameObject:
   m_ObjectHideFlags: 0
@@ -30807,7 +30795,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1312137480}
         m_TargetAssemblyTypeName: ExplorationModeManager, Assembly-CSharp
-        m_MethodName: EnterExplorationMode
+        m_MethodName: ToggleUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -31077,7 +31065,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129493852}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5bdb91fd821a44a91a3a0e7912e61baa, type: 3}
   m_Name: 

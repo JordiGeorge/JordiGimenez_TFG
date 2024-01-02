@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ExplorationModeManager : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class ExplorationModeManager : MonoBehaviour
     private GameStateManager _gameStateManager; //Variable per controlar estats del joc
     private PlayerCameraSwitcher _playerControl; //Activa o desactiva capaciat de navegació
     private UIManager _uiManager;
+    private Button _button;
+    private bool _isUIActive = false;
     
     public Item item; //Variable Accés a item per a mètode Pickup
     
@@ -24,6 +27,8 @@ public class ExplorationModeManager : MonoBehaviour
         _uiManager = GetComponent<UIManager>();
         _gameStateManager = GetComponent<GameStateManager>();
         _playerControl = FindObjectOfType<PlayerCameraSwitcher>();
+        _button = GetComponent<Button>();
+       // _button.onClick.AddListener(ToggleUI);
     }
 
     void Start()
@@ -48,18 +53,32 @@ public class ExplorationModeManager : MonoBehaviour
         }
     }
     
+    void ToggleUI()
+    {
+        if (!_isUIActive)
+        {
+            EnterExplorationMode();
+        }
+        else
+        {
+            ExitExplorationMode();
+        } 
+    }
+    
     // Mètode per entrar a GameState StoryMode
     public void EnterExplorationMode()
     {
         _gameStateManager.SetState(GameState.Exploration);
         DisablePlayerControls();
+        _isUIActive = true;
     }
 
     // Mètode per sortir de  GameState StoryMode i tornar a Exploració
     public void ExitExplorationMode()
     {
         _gameStateManager.SetState(GameState.Navigation);
-        EnablePlayerControls(); 
+        EnablePlayerControls();
+        _isUIActive = false;
     }
 
     // Mètode per desactivar habilitat per nevegar de l'usuri
