@@ -35,11 +35,11 @@ public class DevelopUI : MonoBehaviour
     
     void Start()
     {
-        // Comprova si el GameStateManager o StoryModeManageres troba en l'escena
+        /*// Comprova si el GameStateManager o StoryModeManageres troba en l'escena
         if (_gameStateManager == null || _storyStateManager == null)
         {
             Debug.LogError("No hi ha GameStateManager o StoryMode Manager!!!");
-        }
+        }*/
         _gameStateManager = GetComponent<GameStateManager>();
         _storyStateManager = GetComponent<StoryModeManager>();
 
@@ -70,9 +70,9 @@ public class DevelopUI : MonoBehaviour
         // Activa les diferents UI segons GameState
         switch (_gameStateManager.CurrentState)
         {
-            case GameState.Exploration:
+            case GameState.Navigation:
                 
-                gameStateText = "Mode Exploració";
+                gameStateText = "Mode Navegació";
                 devGameStateTMP.text = gameStateText;
                 
                 // Activa les diferents UI segons GameState
@@ -133,6 +133,10 @@ public class DevelopUI : MonoBehaviour
                         devStoryTMP.text = storyStateText;
                         break;
                 }
+                break;
+            case GameState.Exploration:
+                gameStateText = "Mode Exploració";
+                devGameStateTMP.text = gameStateText;
                 break;
             case GameState.Inventory:
                 gameStateText = "Mode Menu/Inventari";

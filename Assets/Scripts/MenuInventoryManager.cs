@@ -38,7 +38,7 @@ public class MenuInventoryManager : MonoBehaviour
     public void LeaveMenuInventory()
     {
         // Canvia a l'estat d'Exploració i reprèn el temps
-        _gameStateManager.SetState(GameState.Exploration);
+        _gameStateManager.SetState(GameState.Navigation);
         Time.timeScale = 1f;
     }
 }

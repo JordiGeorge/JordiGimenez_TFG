@@ -6,6 +6,7 @@ using UnityEngine.Playables;
 public class UIManager : MonoBehaviour
 {
     //Variables per a assinar els diferents Canvas UI  a l'editor
+    public GameObject navigationUI;
     public GameObject explorationUI;
     public GameObject inventoryUI;
     public GameObject puzzleUI;
@@ -16,10 +17,10 @@ public class UIManager : MonoBehaviour
     
     private void Awake()
     {
-        if (_gameStateManager == null)
+        /*if (_gameStateManager == null)
         {
             Debug.LogError("No existeix cap GameStateManager!!!"); // Comprobació de GameStateManager a l'escena
-        }
+        }*/
         
         _gameStateManager = GetComponent<GameStateManager>(); //Assignem component
         
@@ -47,6 +48,7 @@ public class UIManager : MonoBehaviour
 
         // Tots els UI elements desactivats per defecte
         explorationUI.SetActive(false);
+        navigationUI.SetActive(false);
         inventoryUI.SetActive(false);
         puzzleUI.SetActive(false);
         storyModeUI.SetActive(false);
@@ -54,6 +56,9 @@ public class UIManager : MonoBehaviour
         // Activa les diferents UI segons GameState
         switch (_gameStateManager.CurrentState)
         {
+            case GameState.Navigation:
+                navigationUI.SetActive(true);
+                break;
             case GameState.Exploration:
                 explorationUI.SetActive(true);
                 break;

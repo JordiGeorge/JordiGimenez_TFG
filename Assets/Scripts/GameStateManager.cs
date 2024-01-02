@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Playables;
 
 // Enumeració dels diferents estats del joc
 public enum GameState
 {
+    Navigation,
     Exploration,
     Inventory,
     Puzzle,
@@ -56,6 +58,10 @@ public class GameStateManager : MonoBehaviour
         // Sortida per a l'estat actual
         switch (_currentState)
         {
+            case GameState.Navigation:
+                // Activa Moviment del jugador.
+                EnableNavigation();
+                break;
             case GameState.Exploration:
                 // Activa Moviment del jugador.
                 EnableExploration();
@@ -77,6 +83,11 @@ public class GameStateManager : MonoBehaviour
         // Lògica addicional per quan es canvia d'estat
     }
     
+    private void EnableNavigation()
+    {
+        // Mètode per activar l'estat de navegació
+
+    }
    
     private void EnableExploration()
     {
@@ -106,8 +117,13 @@ public class GameStateManager : MonoBehaviour
     {
         switch (_currentState)
         {
-            case GameState.Exploration:
+            case GameState.Navigation:
                 //Activa la navegació de l'usuari per l'escena
+                _uiManager.GameStateSwitcherUI();
+                _developUI.InfoDevelopUI();
+                break;
+            case GameState.Exploration:
+                //Activa la explorarció de l'usuari per l'escena
                 _uiManager.GameStateSwitcherUI();
                 _developUI.InfoDevelopUI();
                 break;

@@ -88,7 +88,7 @@ public class StoryModeManager : MonoBehaviour
     // Mètode per sortir de  GameState StoryMode i tornar a Exploració
     public void ExitStoryMode()
     {
-        _gameStateManager.SetState(GameState.Exploration);
+        _gameStateManager.SetState(GameState.Navigation);
         EnablePlayerControls(); 
     }
 
