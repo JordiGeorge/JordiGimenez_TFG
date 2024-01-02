@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +13,7 @@ public class ExplorationModeManager : MonoBehaviour
     private Button _button;
     private bool _isUIActive = false;
     
-    public Item item; //Variable Accés a item per a mètode Pickup
+    public ItemPickup[] items; //Variable Accés a item per a mètode Pickup
     
     //Tintem color del objecte de vermell quan el mouse esta a sobre (hover)
     Color mouseOverColor = Color.red;
@@ -21,116 +22,57 @@ public class ExplorationModeManager : MonoBehaviour
     // Variables pels components mesh and sprite renderer 
     MeshRenderer meshRenderer;
     SpriteRenderer spriteRenderer;
-    
-    void Awake()
+
+    void Start()
     {
+        //Busquem i assignem els components a variables
         _uiManager = GetComponent<UIManager>();
         _gameStateManager = GetComponent<GameStateManager>();
         _playerControl = FindObjectOfType<PlayerCameraSwitcher>();
         _button = GetComponent<Button>();
-       // _button.onClick.AddListener(ToggleUI);
-    }
-
-    void Start()
-    {
-        //Intent d'obtenir el component MeshRenderer
-        meshRenderer = GetComponent<MeshRenderer>();
-        if (meshRenderer != null)
+        items = FindObjectsOfType<ItemPickup>();
+        
+        foreach (var item in items)
         {
-            originalColor = meshRenderer.material.color; //Assignem el color del material mesh renderer
-        }
-
-        //Intent d'obtenir el component MeshRenderer
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer != null)
-        {
-            originalColor = spriteRenderer.color;  //Assignem el color del sprite
-        }
-
-        if (meshRenderer == null && spriteRenderer == null)
-        {
-            Debug.LogWarning("No MeshRenderer o SpriteRenderer trobat a l'objecte.");
+            // Try to get MeshRenderer and SpriteRenderer from the item
+            MeshRenderer meshRenderer = item.GetComponent<MeshRenderer>();
+            SpriteRenderer spriteRenderer = item.GetComponent<SpriteRenderer>();
         }
     }
     
+    //Usem el mateix botó per entrar/sortir a Mode Exploració
     void ToggleUI()
     {
         if (!_isUIActive)
-        {
             EnterExplorationMode();
-        }
-        else
-        {
+        else if (_isUIActive)
             ExitExplorationMode();
-        } 
     }
     
-    // Mètode per entrar a GameState StoryMode
+    // Mètode per entrar a GameState Exploració
     public void EnterExplorationMode()
     {
         _gameStateManager.SetState(GameState.Exploration);
-        DisablePlayerControls();
+        foreach (var item in items)
+        {
+            item.GetComponent<ItemPickup>().enabled = true;
+            item.isExplorationMode = true;
+        }
+        _playerControl.enabled = false;
         _isUIActive = true;
     }
 
-    // Mètode per sortir de  GameState StoryMode i tornar a Exploració
+    // Mètode per sortir de  GameState i tornar a Navegació
     public void ExitExplorationMode()
     {
         _gameStateManager.SetState(GameState.Navigation);
-        EnablePlayerControls();
+        foreach (var item in items)
+        {
+            item.GetComponent<ItemPickup>().enabled = false;
+            item.isExplorationMode = false;
+        }
+        _playerControl.enabled = true;
         _isUIActive = false;
     }
-
-    // Mètode per desactivar habilitat per nevegar de l'usuri
-    private void DisablePlayerControls()
-    {
-        // La lògica per desactivar els controls del jugador va aquí
-        _playerControl.enabled = false;
-    }
-    // Mètode per activar habilitat per nevegar de l'usuri
-    private void EnablePlayerControls()
-    {
-        // La lògica per activar els controls del jugador va aquí
-        _playerControl.enabled = true;
-    }
     
-    private void OnMouseDown()
-    {
-        PickUp();
-    }
-
-    private void OnMouseOver()
-    {
-        if (meshRenderer != null)
-        {
-            meshRenderer.material.color = mouseOverColor;
-        }
-        else if (spriteRenderer != null)
-        {
-            spriteRenderer.color = mouseOverColor;
-        }
-        
-        Debug.Log("Name: " + gameObject.name);
-    }
-
-    private void OnMouseExit()
-    {
-        if (meshRenderer != null)
-        {
-            meshRenderer.material.color = originalColor;
-        }
-        else if (spriteRenderer != null)
-        {
-            spriteRenderer.color = originalColor;
-        }
-    }
-    
-    // Mètode per afegir Item a la llista de l'inventari i eliminar objecte de l'escena
-    public void PickUp ()
-    {
-        Debug.Log("Item " + item.name); //Control
-		
-        Inventory.instance.Add(item);// afegir a llista inventory
-        Destroy(gameObject);// Eliminem objecte de l'escena
-    }
 }
