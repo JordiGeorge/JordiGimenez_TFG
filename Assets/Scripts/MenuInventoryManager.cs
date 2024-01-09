@@ -19,7 +19,6 @@ public class MenuInventoryManager : MonoBehaviour
         {
             Debug.LogError("No hi ha GameStateManage!!!r");
         }
-        
     }
 
     private void ChangeTheText()

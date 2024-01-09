@@ -1,11 +1,13 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class ItemPickup : MonoBehaviour 
 {
     public Item item; //Variable Accés a item per a mètode Pickup
-
+    private UIManager _uiManager;
+    private TextMeshProUGUI textToChange; // Variable de tipus TextMeshProUGUI
     public bool isExplorationMode;
     
     //Tintem color del objecte de vermell quan el mouse esta a sobre (hover)
@@ -20,6 +22,9 @@ public class ItemPickup : MonoBehaviour
     {
         if (isExplorationMode)
         {
+            _uiManager = FindFirstObjectByType<UIManager>();
+            textToChange = _uiManager.explorationUI.GetComponentInChildren<TextMeshProUGUI>();
+            
             //Intent d'obtenir el component MeshRenderer
             meshRenderer = GetComponent<MeshRenderer>();
             if (meshRenderer != null)
@@ -48,11 +53,6 @@ public class ItemPickup : MonoBehaviour
             PickUp();
         }
     }
-    
-   /* private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Name: " + other.name);
-    }*/
 
     private void OnMouseOver()
     {
@@ -66,6 +66,8 @@ public class ItemPickup : MonoBehaviour
             {
                 spriteRenderer.color = mouseOverColor;
             }
+            
+            textToChange.text = item.name;
         }
     }
 

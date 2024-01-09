@@ -4,8 +4,6 @@ using UnityEngine;
 public class InventoryUI : MonoBehaviour 
 {
 	public Transform itemsPanel;	//Gameobject pare 
-	public GameObject inventoryUI;	// The entire UI
-
 	private Inventory inventory;	//Variable d'Accés a l'inventari
 	private InventorySlot[] slots;	//Array d'slots d'inventari
 
@@ -27,7 +25,8 @@ public class InventoryUI : MonoBehaviour
 			{
 				slots[i].AddItem(inventory.items[i]); //Afegim Item a slot si no hi ha cap
 				
-			} else
+			} 
+			else
 			{
 				//Neteja l'slot amb mètode de la clase
 				slots[i].ClearSlot();
