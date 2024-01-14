@@ -16,7 +16,8 @@ public class Item : ScriptableObject
 	{
 		//Lògica quan usem l'objecte
 		Debug.Log("Using " + name);
-	}
+        Inventory.instance.Remove(this);
+    }
 	//Mètode per Eliminar item de l'inventari (List)
 	public void RemoveFromInventory ()
 	{

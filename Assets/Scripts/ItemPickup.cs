@@ -78,10 +78,12 @@ public class ItemPickup : MonoBehaviour
             if (meshRenderer != null)
             {
                 meshRenderer.material.color = originalColor;
+                textToChange.text = null; textToChange.text = null; //Reset de la UI d'exploracio
             }
             else if (spriteRenderer != null)
             {
                 spriteRenderer.color = originalColor;
+                textToChange.text = null; textToChange.text = null; //Reset de la UI d'exploracio
             }
         }
     }
@@ -94,6 +96,7 @@ public class ItemPickup : MonoBehaviour
         {
             Debug.Log("Item " + item.name); //Control
 
+            textToChange.text = null; //Reset de la UI d'exploracio
             Inventory.instance.Add(item); // afegir a llista inventory
             Destroy(gameObject); // Eliminem objecte de l'escena
         }
