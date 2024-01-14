@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,8 @@ public class InventorySlot : MonoBehaviour
 	public Image icon;			//variable per asignar sprite desde Scriptable Object
 	public Button removeButton;	//Botó per descartar objectes a l'inventari
 
-	Item item;  //Assignem Item Corresponent si es objecte d'inventari
+	private Item item;  //Assignem Item Corresponent si es objecte d'inventari
+	Color itemColor;
 
 	//Actualitzam Slot en base a informació de l'escriptable object
 	public void AddItem (Item newItem)
@@ -16,7 +18,8 @@ public class InventorySlot : MonoBehaviour
 		item = newItem;
 
 		icon.sprite = item.icon;
-		icon.enabled = true;
+		icon.color = Color.white;
+        icon.enabled = true;
 		removeButton.interactable = true;
 	}
 

@@ -25,9 +25,6 @@ public class GameStateManager : MonoBehaviour
     //Proves amb Timeline
     public PlayableDirector _storyModeTimeline;
 
-    //Textura del cursor
-    private Texture2D customCursorTexture;
-
     // Propietat per accedir a l'estat actual
     public GameState CurrentState
     {
@@ -46,7 +43,6 @@ public class GameStateManager : MonoBehaviour
 
     void Start()
     {
-        Cursor.SetCursor(customCursorTexture, Vector2.zero, CursorMode.Auto);
 
         //_storyModeTimeline.GetComponent();
         SetState(GameState.StoryMode);
@@ -165,6 +161,8 @@ public class GameStateManager : MonoBehaviour
         #endif
     }
 }
+
+
 
 
 
