@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-//Classe per visualitzar el cursor i canviar la seva aparença
+//Classe per visualitzar el cursor i canviar la seva aparenï¿½a
 public class CustomCursor : MonoBehaviour
 {
     public Texture2D customCursorTexture;
@@ -10,6 +10,6 @@ public class CustomCursor : MonoBehaviour
     void Start()
     {
         // Vector2.zero (Hotspot top-left corner of the image)
-        Cursor.SetCursor(customCursorTexture, Vector2.zero, CursorMode.Auto);
+        Cursor.SetCursor(customCursorTexture, new Vector2(customCursorTexture.width/2, customCursorTexture.height/2), CursorMode.Auto);
     }
 }
