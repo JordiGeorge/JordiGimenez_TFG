@@ -10,7 +10,6 @@ public class InventorySlot : MonoBehaviour
 	public Button removeButton;	//Botó per descartar objectes a l'inventari
 
 	private Item item;  //Assignem Item Corresponent si es objecte d'inventari
-	Color itemColor;
 
 	//Actualitzam Slot en base a informació de l'escriptable object
 	public void AddItem (Item newItem)
