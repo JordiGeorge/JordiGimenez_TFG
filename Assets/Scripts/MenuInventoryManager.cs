@@ -4,8 +4,8 @@ using TMPro;
 
 public class MenuInventoryManager : MonoBehaviour
 {
-
-    public GameObject[] infoMenu;
+    [SerializeField]
+    private GameObject[] infoMenu;
     
     //Variable de GameState per poder controlar els stats del joc 
     private GameStateManager _gameStateManager;

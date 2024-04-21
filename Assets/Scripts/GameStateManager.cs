@@ -43,7 +43,6 @@ public class GameStateManager : MonoBehaviour
 
     void Start()
     {
-
         //_storyModeTimeline.GetComponent();
         SetState(GameState.StoryMode);
         _storyManager.SetStoryState(StoryState.Introduction);

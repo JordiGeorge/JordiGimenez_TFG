@@ -17,6 +17,7 @@ public class ExplorationModeManager : MonoBehaviour
     void Start()
     {
         //Busquem i assignem els components a variables
+        _isUIActive = false;
         // _uiManager = GetComponent<UIManager>();
         _gameStateManager = GetComponent<GameStateManager>();
         _playerControl = FindObjectOfType<PlayerCameraSwitcher>();
@@ -36,6 +37,7 @@ public class ExplorationModeManager : MonoBehaviour
     public void EnterExplorationMode()
     {
         _gameStateManager.SetState(GameState.Exploration);
+        
         foreach (var item in items)
         {
             item.GetComponent<ItemPickup>().enabled = true;
@@ -43,12 +45,15 @@ public class ExplorationModeManager : MonoBehaviour
         }
         _playerControl.enabled = false;
         _isUIActive = true;
+       
     }
 
     // Mètode per sortir de  GameState i tornar a Navegació
     public void ExitExplorationMode()
     {
+        
         _gameStateManager.SetState(GameState.Navigation);
+        
         foreach (var item in items)
         {
             item.GetComponent<ItemPickup>().enabled = false;
