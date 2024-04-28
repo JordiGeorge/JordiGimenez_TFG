@@ -17,9 +17,13 @@ public enum GameState
 
 public class GameStateManager : MonoBehaviour
 {
+    [SerializeField]
     private GameState _currentState;
+    [SerializeField]
     private UIManager _uiManager;
+    [SerializeField]
     private StoryModeManager _storyManager;
+    [SerializeField]
     private DevelopUI _developUI;
     
     //Proves amb Timeline
@@ -37,112 +41,26 @@ public class GameStateManager : MonoBehaviour
         _uiManager = GetComponent<UIManager>();
         _storyManager = GetComponent<StoryModeManager>();
         _developUI = GetComponent<DevelopUI>();
-        
-       _storyModeTimeline = GetComponent<PlayableDirector>();//Proves amb Timeline
     }
 
     void Start()
     {
-        //_storyModeTimeline.GetComponent();
         SetState(GameState.StoryMode);
         _storyManager.SetStoryState(StoryState.Introduction);
-        
-        //_storyModeTimeline.playableAsset = _storyManager.timelineAsset; //Proves amb Timeline
+        _storyModeTimeline.Play(); //Activem Playable de Timeline (Proves amb Timeline)
     }
 
     public void SetState(GameState newState)
     {
         _currentState = newState;
         Debug.Log("GameState: " + _currentState); // Seguiment dels estats del joc
-
-        // Sortida per a l'estat actual
-        switch (_currentState)
-        {
-            case GameState.Navigation:
-                // Activa Moviment del jugador.
-                EnableNavigation();
-                break;
-            case GameState.Exploration:
-                // Activa Moviment del jugador.
-                EnableExploration();
-                break;
-            case GameState.Inventory:
-                // Activa la UI de l'inventari, i Menu del joc
-                EnableInventory();
-                break;
-            case GameState.Puzzle:
-                // Lògica dels Puzzles
-                EnablePuzzle();
-                break;
-            case GameState.StoryMode:
-                // Narrativa, Cinemàtiques, transicions
-                EnableStoryMode();
-                break;
-        }
-
-        // Lògica addicional per quan es canvia d'estat
-    }
-    
-    private void EnableNavigation()
-    {
-        // Mètode per activar l'estat de navegació
-
-    }
-   
-    private void EnableExploration()
-    {
-        // Mètode per activar l'estat d'exploració
-
-    }
-
-    private void EnableInventory()
-    {
-        // Mètode per activar l'estat d'inventari i anàlisi
-
-    }
-
-    private void EnablePuzzle()
-    {
-        //Mètode per activar els Puzzles GameState
-    }
-
-    private void EnableStoryMode()
-    {
-        //Mètode per activar la narrativa
-        _storyModeTimeline.Play(); //Activem Playable de Timeline (Proves amb Timeline)
     }
     
     // Actualització d'estats
     void Update()
     {
-        switch (_currentState)
-        {
-            case GameState.Navigation:
-                //Activa la navegació de l'usuari per l'escena
-                _uiManager.GameStateSwitcherUI();
-                _developUI.InfoDevelopUI();
-                break;
-            case GameState.Exploration:
-                //Activa la explorarció de l'usuari per l'escena
-                _uiManager.GameStateSwitcherUI();
-                _developUI.InfoDevelopUI();
-                break;
-            case GameState.Inventory:
-                //Activa la UI del MenuInventari
-                _uiManager.GameStateSwitcherUI();
-                _developUI.InfoDevelopUI();
-                break;
-            case GameState.Puzzle:
-                //Activa la UI dels Puzzles GameState
-                _uiManager.GameStateSwitcherUI();
-                _developUI.InfoDevelopUI();
-                break;
-            case GameState.StoryMode:
-                //Activa la UI narrativa
-                _uiManager.GameStateSwitcherUI();
-                _developUI.InfoDevelopUI();
-                break;
-        }
+        _developUI.InfoDevelopUI();
+        _uiManager.GameStateSwitcherUI();
 
         if (Input.GetKey(KeyCode.Escape))
         {

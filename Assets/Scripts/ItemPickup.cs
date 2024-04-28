@@ -18,11 +18,15 @@ public class ItemPickup : MonoBehaviour
     MeshRenderer meshRenderer;
     SpriteRenderer spriteRenderer;
 
+    private void Awake()
+    {
+        _uiManager = FindFirstObjectByType<UIManager>();
+    }
+
     void Start()
     {
         if (isExplorationMode)
         {
-            _uiManager = FindFirstObjectByType<UIManager>();
             textToChange = _uiManager.explorationUI.GetComponentInChildren<TextMeshProUGUI>();
             
             //Intent d'obtenir el component MeshRenderer

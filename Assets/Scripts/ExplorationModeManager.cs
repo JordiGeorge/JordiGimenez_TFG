@@ -8,7 +8,6 @@ public class ExplorationModeManager : MonoBehaviour
 {
     private StoryState _currentStoryState;
     private GameStateManager _gameStateManager; //Variable per controlar estats del joc
-    private PlayerCameraSwitcher _playerControl; //Activa o desactiva capaciat de navegació
     //private UIManager _uiManager;
     private bool _isUIActive;
     
@@ -20,7 +19,6 @@ public class ExplorationModeManager : MonoBehaviour
         _isUIActive = false;
         // _uiManager = GetComponent<UIManager>();
         _gameStateManager = GetComponent<GameStateManager>();
-        _playerControl = FindObjectOfType<PlayerCameraSwitcher>();
         items = FindObjectsOfType<ItemPickup>();
     }
     
@@ -43,7 +41,6 @@ public class ExplorationModeManager : MonoBehaviour
             item.GetComponent<ItemPickup>().enabled = true;
             item.isExplorationMode = true;
         }
-        _playerControl.enabled = false;
         _isUIActive = true;
        
     }
@@ -59,7 +56,6 @@ public class ExplorationModeManager : MonoBehaviour
             item.GetComponent<ItemPickup>().enabled = false;
             item.isExplorationMode = false;
         }
-        _playerControl.enabled = true;
         _isUIActive = false;
     }
 }

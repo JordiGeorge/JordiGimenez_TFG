@@ -32,16 +32,15 @@ public class DevelopUI : MonoBehaviour
     private UI_Button_State buttonStateUp;
     private UI_Button_State buttonStateRight;
     private UI_Button_State buttonStateLeft;
-    
-    void Start()
+
+    private void Awake()
     {
-        /*// Comprova si el GameStateManager o StoryModeManageres troba en l'escena
-        if (_gameStateManager == null || _storyStateManager == null)
-        {
-            Debug.LogError("No hi ha GameStateManager o StoryMode Manager!!!");
-        }*/
         _gameStateManager = GetComponent<GameStateManager>();
         _storyStateManager = GetComponent<StoryModeManager>();
+    }
+
+    void Start()
+    {
 
         devStoryTMP = devStoryStateUI.GetComponent<TextMeshProUGUI>();
         devStoryTMP.text = storyStateText;

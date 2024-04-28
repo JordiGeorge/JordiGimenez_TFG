@@ -25,16 +25,14 @@ public class PlayerCameraSwitcher : MonoBehaviour
     void Start()
     {
         _gameStateManager.SetState(GameState.Navigation);
-
-        if (_gameStateManager.CurrentState != GameState.Navigation) _canSwitch = false;
-        
         // La primera càmera es índex 0
         SwitchCamera(0);
     }
 
     void Update()
     {
-        if (_canSwitch)
+
+        if (_canSwitch && _gameStateManager.CurrentState == GameState.Navigation)
         {
             if (_currentCameraIndex == 0)
             {
@@ -115,6 +113,7 @@ public class PlayerCameraSwitcher : MonoBehaviour
     //Mètode que permet canviar Index de la Llista de Càmeres Virtuals
     private void SwitchCamera(int index)
     {
+
         StartCoroutine(SwitchCameraCooldown());
         foreach (CinemachineVirtualCamera cam in cameras)
         {
