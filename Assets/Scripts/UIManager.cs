@@ -1,7 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Playables;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -17,7 +16,6 @@ public class UIManager : MonoBehaviour
     
     private void Awake()
     {
-        
         _gameStateManager = GetComponent<GameStateManager>(); //Assignem component
         
         if (storyModeUI != null)
