@@ -1,22 +1,20 @@
-using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class ItemPickup : MonoBehaviour 
 {
     public Item item; //Variable Accés a item per a mètode Pickup
     private UIManager _uiManager;
-    private TextMeshProUGUI textToChange; // Variable de tipus TextMeshProUGUI
+    private TextMeshProUGUI _textToChange; // Variable de tipus TextMeshProUGUI
     public bool isExplorationMode;
     
     //Tintem color del objecte de vermell quan el mouse esta a sobre (hover)
-    Color mouseOverColor = Color.red;
-    Color originalColor;
+    private Color _mouseOverColor = Color.red;
+    private Color _originalColor;
 
     // Variables pels components mesh and sprite renderer 
-    MeshRenderer meshRenderer;
-    SpriteRenderer spriteRenderer;
+    private MeshRenderer _meshRenderer;
+    private SpriteRenderer _spriteRenderer;
 
     private void Awake()
     {
@@ -27,23 +25,23 @@ public class ItemPickup : MonoBehaviour
     {
         if (isExplorationMode)
         {
-            textToChange = _uiManager.explorationUI.GetComponentInChildren<TextMeshProUGUI>();
+            _textToChange = _uiManager.explorationUI.GetComponentInChildren<TextMeshProUGUI>();
             
             //Intent d'obtenir el component MeshRenderer
-            meshRenderer = GetComponent<MeshRenderer>();
-            if (meshRenderer != null)
+            _meshRenderer = GetComponent<MeshRenderer>();
+            if (_meshRenderer != null)
             {
-                originalColor = meshRenderer.material.color; //Assignem el color del material mesh renderer
+                _originalColor = _meshRenderer.material.color; //Assignem el color del material mesh renderer
             }
 
             //Intent d'obtenir el component MeshRenderer
-            spriteRenderer = GetComponent<SpriteRenderer>();
-            if (spriteRenderer != null)
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            if (_spriteRenderer != null)
             {
-                originalColor = spriteRenderer.color; //Assignem el color del sprite
+                _originalColor = _spriteRenderer.color; //Assignem el color del sprite
             }
 
-            if (meshRenderer == null && spriteRenderer == null)
+            if (_meshRenderer == null && _spriteRenderer == null)
             {
                 Debug.LogWarning("No MeshRenderer o SpriteRenderer trobat a l'objecte.");
             }
@@ -62,16 +60,16 @@ public class ItemPickup : MonoBehaviour
     {
         if (isExplorationMode)
         {
-            if (meshRenderer != null)
+            if (_meshRenderer != null)
             {
-                meshRenderer.material.color = mouseOverColor;
+                _meshRenderer.material.color = _mouseOverColor;
             }
-            else if (spriteRenderer != null)
+            else if (_spriteRenderer != null)
             {
-                spriteRenderer.color = mouseOverColor;
+                _spriteRenderer.color = _mouseOverColor;
             }
             
-            textToChange.text = item.name;
+            _textToChange.text = item.name;
         }
     }
 
@@ -79,19 +77,18 @@ public class ItemPickup : MonoBehaviour
     {
         if (isExplorationMode)
         {
-            if (meshRenderer != null)
+            if (_meshRenderer != null)
             {
-                meshRenderer.material.color = originalColor;
-                textToChange.text = null; //Reset de la UI d'exploracio
+                _meshRenderer.material.color = _originalColor;
+                _textToChange.text = null; //Reset de la UI d'exploracio
             }
-            else if (spriteRenderer != null)
+            else if (_spriteRenderer != null)
             {
-                spriteRenderer.color = originalColor;
-                textToChange.text = null;//Reset de la UI d'exploracio
+                _spriteRenderer.color = _originalColor;
+                _textToChange.text = null;//Reset de la UI d'exploracio
             }
         }
     }
-    
     
 	// Mètode per afegir Item a la llista de l'inventari i eliminar objecte de l'escena
 	public void PickUp ()
@@ -100,11 +97,8 @@ public class ItemPickup : MonoBehaviour
         {
             Debug.Log("Item " + item.name); //Control
             Inventory.instance.Add(item); // afegir a llista inventory
-            //Destroy(gameObject); // Eliminem objecte de l'escena
             gameObject.SetActive(false);
-            
-            textToChange.text = null; //Reset de la UI d'exploracio
+            _textToChange.text = null; //Reset de la UI d'exploracio
         }
     }
-	
 }

@@ -1,14 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ExplorationModeManager : MonoBehaviour
 {
     private StoryState _currentStoryState;
     private GameStateManager _gameStateManager; //Variable per controlar estats del joc
-    //private UIManager _uiManager;
     private bool _isUIActive;
     
     public ItemPickup[] items; //Variable Accés a item per a mètode Pickup
@@ -17,13 +12,12 @@ public class ExplorationModeManager : MonoBehaviour
     {
         //Busquem i assignem els components a variables
         _isUIActive = false;
-        // _uiManager = GetComponent<UIManager>();
         _gameStateManager = GetComponent<GameStateManager>();
         items = FindObjectsOfType<ItemPickup>();
     }
     
     //Usem el mateix botó per entrar/sortir a Mode Exploració
-    void ToggleUI()
+    public void ToggleUI()
     {
         if (!_isUIActive)
             EnterExplorationMode();
@@ -32,7 +26,7 @@ public class ExplorationModeManager : MonoBehaviour
     }
     
     // Mètode per entrar a GameState Exploració
-    public void EnterExplorationMode()
+    private void EnterExplorationMode()
     {
         _gameStateManager.SetState(GameState.Exploration);
         
@@ -46,9 +40,8 @@ public class ExplorationModeManager : MonoBehaviour
     }
 
     // Mètode per sortir de  GameState i tornar a Navegació
-    public void ExitExplorationMode()
+    private void ExitExplorationMode()
     {
-        
         _gameStateManager.SetState(GameState.Navigation);
         
         foreach (var item in items)

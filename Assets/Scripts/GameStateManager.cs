@@ -1,9 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.Playables;
 
 // Enumeració dels diferents estats del joc
 public enum GameState
@@ -18,49 +13,45 @@ public enum GameState
 public class GameStateManager : MonoBehaviour
 {
     [SerializeField]
-    private GameState _currentState;
+    private GameState currentState;
     [SerializeField]
-    private UIManager _uiManager;
+    private UIManager uiManager;
     [SerializeField]
-    private StoryModeManager _storyManager;
+    private StoryModeManager storyManager;
     [SerializeField]
-    private DevelopUI _developUI;
-    
-    //Proves amb Timeline
-    public PlayableDirector _storyModeTimeline;
+    private DevelopUI developUI;
 
     // Propietat per accedir a l'estat actual
     public GameState CurrentState
     {
-        get { return _currentState; }
+        get { return currentState; }
         set { SetState(value); }
     }
     
     private void Awake()
     {
-        _uiManager = GetComponent<UIManager>();
-        _storyManager = GetComponent<StoryModeManager>();
-        _developUI = GetComponent<DevelopUI>();
+        uiManager = GetComponent<UIManager>();
+        storyManager = GetComponent<StoryModeManager>();
+        developUI = GetComponent<DevelopUI>();
     }
 
     void Start()
     {
         SetState(GameState.StoryMode);
-        _storyManager.SetStoryState(StoryState.Introduction);
-        _storyModeTimeline.Play(); //Activem Playable de Timeline (Proves amb Timeline)
+        storyManager.SetStoryState(StoryState.Introduction);
     }
 
     public void SetState(GameState newState)
     {
-        _currentState = newState;
-        Debug.Log("GameState: " + _currentState); // Seguiment dels estats del joc
+        currentState = newState;
+        Debug.Log("GameState: " + currentState); // Seguiment dels estats del joc
     }
     
     // Actualització d'estats
     void Update()
     {
-        _developUI.InfoDevelopUI();
-        _uiManager.GameStateSwitcherUI();
+        developUI.InfoDevelopUI();
+        uiManager.GameStateSwitcherUI();
 
         if (Input.GetKey(KeyCode.Escape))
         {

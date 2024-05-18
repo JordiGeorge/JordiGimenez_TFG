@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.Playables;
-using UnityEngine.Timeline;
 
 //Enum per controlar estats del joc
 public enum StoryState
@@ -19,16 +17,19 @@ public class StoryModeManager : MonoBehaviour
     private StoryState _currentStoryState;
     private GameStateManager _gameStateManager; //Variable per controlar estats del joc
     private UIManager _uiManager;
-    
-    //Funcionalitats Timeline (WIP)
-    public PlayableDirector _storyModeTimeline;
-    public TimelineAsset timelineAsset;
+    private bool _isUIActive;
     
     // Propietat de la classe pel control de la història actual
     public StoryState CurrentStoryState
     {
         get { return _currentStoryState; }
         set { SetStoryState(value); }
+    }
+    void Awake()
+    {
+        _gameStateManager = GetComponent<GameStateManager>();
+        _uiManager = GetComponent<UIManager>();
+        _isUIActive = false;
     }
     
     //Mètode per setejar els estats del progrés de la història
@@ -64,26 +65,29 @@ public class StoryModeManager : MonoBehaviour
                 // Info final Demo
                 break;
         }
-
         // Lògica addicional per quan es canvia d'estat
     }
     
-    void Awake()
+    //Usem el mateix botó per entrar/sortir a Mode Exploració
+    public void ToggleUI()
     {
-        _uiManager = GetComponent<UIManager>();
-        _gameStateManager = GetComponent<GameStateManager>();
+        if (!_isUIActive)
+            EnterStoryMode();
+        else if (_isUIActive)
+            ExitStoryMode();
     }
 
     // Mètode per entrar a GameState StoryMode
-    public void EnterStoryMode()
+    private void EnterStoryMode()
     {
         _gameStateManager.SetState(GameState.StoryMode);
+        _isUIActive = true;
     }
 
     // Mètode per sortir de  GameState StoryMode i tornar a Exploració
-    public void ExitStoryMode()
+    private void ExitStoryMode()
     {
         _gameStateManager.SetState(GameState.Navigation);
+        _isUIActive = false;
     }
-
 }

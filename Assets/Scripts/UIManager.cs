@@ -17,10 +17,6 @@ public class UIManager : MonoBehaviour
     
     private void Awake()
     {
-        /*if (_gameStateManager == null)
-        {
-            Debug.LogError("No existeix cap GameStateManager!!!"); // Comprobació de GameStateManager a l'escena
-        }*/
         
         _gameStateManager = GetComponent<GameStateManager>(); //Assignem component
         

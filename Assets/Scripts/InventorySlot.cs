@@ -1,7 +1,5 @@
-
 using UnityEngine;
 using UnityEngine.UI;
-
 
 //Classe que gestiona slots a UI
 public class InventorySlot : MonoBehaviour 
@@ -9,14 +7,14 @@ public class InventorySlot : MonoBehaviour
 	public Image icon;			//variable per asignar sprite desde Scriptable Object
 	public Button removeButton;	//Botó per descartar objectes a l'inventari
 
-	private Item item;  //Assignem Item Corresponent si es objecte d'inventari
+	private Item _item;  //Assignem Item Corresponent si es objecte d'inventari
 
 	//Actualitzam Slot en base a informació de l'escriptable object
 	public void AddItem (Item newItem)
 	{
-		item = newItem;
+		_item = newItem;
 
-		icon.sprite = item.icon;
+		icon.sprite = _item.icon;
 		icon.color = Color.white;
         icon.enabled = true;
 		removeButton.interactable = true;
@@ -25,7 +23,7 @@ public class InventorySlot : MonoBehaviour
 	//Reset del slot
 	public void ClearSlot ()
 	{
-		item = null;
+		_item = null;
 
 		icon.sprite = null;
 		icon.enabled = false;
@@ -35,16 +33,15 @@ public class InventorySlot : MonoBehaviour
 	//Mètode per borrar item de la llista de la classe inventory
 	public void OnRemoveButton ()
 	{
-		Inventory.instance.Remove(item);
+		Inventory.instance.Remove(_item);
 	}
 
 	//Mètode que comproba si es objecte de tipus item i crida a mètode de la seva classe (Funcionalitat Puzzle)
 	public void UseItem ()
 	{
-		if (item != null)
+		if (_item != null)
 		{
-			item.Use();
+			_item.Use();
 		}
 	}
-
 }
