@@ -28,23 +28,24 @@ public class GameStateManager : MonoBehaviour
         set { SetState(value); }
     }
     
+    public void SetState(GameState newState)
+    {
+        currentState = newState;
+        Debug.Log("GameState: " + currentState); // Seguiment dels estats del joc
+    }
+    
     private void Awake()
     {
         uiManager = GetComponent<UIManager>();
         storyManager = GetComponent<StoryModeManager>();
         developUI = GetComponent<DevelopUIManager>();
+        SetState(GameState.StoryMode);
     }
 
     void Start()
     {
-        SetState(GameState.StoryMode);
+        
         storyManager.SetStoryState(StoryState.Introduction);
-    }
-
-    public void SetState(GameState newState)
-    {
-        currentState = newState;
-        Debug.Log("GameState: " + currentState); // Seguiment dels estats del joc
     }
     
     // Actualització d'estats

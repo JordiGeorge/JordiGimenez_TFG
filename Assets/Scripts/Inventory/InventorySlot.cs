@@ -10,6 +10,11 @@ public class InventorySlot : MonoBehaviour
 	private Item _item;  //Assignem Item Corresponent si es objecte d'inventari
 
 	//Actualitzam Slot en base a informació de l'escriptable object
+
+	void Start()
+	{
+		this.gameObject.SetActive(true);
+	}
 	public void AddItem (Item newItem)
 	{
 		_item = newItem;

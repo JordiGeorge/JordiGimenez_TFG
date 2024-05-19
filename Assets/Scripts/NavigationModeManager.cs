@@ -148,8 +148,8 @@ public class NavigationModeManager : MonoBehaviour
         {            
             _navigationUI_down.color = Color.cyan;
             _navigationUI_up.color = Color.gray;
-            _navigationUI_right.color = Color.cyan;
-            _navigationUI_left.color = Color.cyan;
+            _navigationUI_right.color = Color.gray;
+            _navigationUI_left.color = Color.gray;
         }
         else if (_currentCameraIndex == 1)
         {

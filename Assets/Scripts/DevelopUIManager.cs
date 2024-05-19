@@ -35,6 +35,7 @@ public class DevelopUIManager : MonoBehaviour
         
         devLocationTMP = devLocationUI.GetComponent<TextMeshProUGUI>();
         devLocationTMP.text = locationText;
+        
     }
     
     public void InfoDevelopUI()
