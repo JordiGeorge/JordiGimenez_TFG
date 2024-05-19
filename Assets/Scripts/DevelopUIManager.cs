@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class DevelopUI : MonoBehaviour
+public class DevelopUIManager : MonoBehaviour
 {
     //Variable de GameState per poder controlar els stats del joc 
     private GameStateManager _gameStateManager;

@@ -19,7 +19,7 @@ public class GameStateManager : MonoBehaviour
     [SerializeField]
     private StoryModeManager storyManager;
     [SerializeField]
-    private DevelopUI developUI;
+    private DevelopUIManager developUI;
 
     // Propietat per accedir a l'estat actual
     public GameState CurrentState
@@ -32,7 +32,7 @@ public class GameStateManager : MonoBehaviour
     {
         uiManager = GetComponent<UIManager>();
         storyManager = GetComponent<StoryModeManager>();
-        developUI = GetComponent<DevelopUI>();
+        developUI = GetComponent<DevelopUIManager>();
     }
 
     void Start()
