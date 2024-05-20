@@ -15,9 +15,8 @@ public enum StoryState
 public class StoryModeManager : MonoBehaviour
 {
     private StoryState _currentStoryState;
-    private GameStateManager _gameStateManager; //Variable per controlar estats del joc
+    private GameManager _gameStateManager; //Variable per controlar estats del joc
     private UIManager _uiManager;
-    private bool _isUIActive;
     
     // Propietat de la classe pel control de la història actual
     public StoryState CurrentStoryState
@@ -27,9 +26,8 @@ public class StoryModeManager : MonoBehaviour
     }
     void Awake()
     {
-        _gameStateManager = GetComponent<GameStateManager>();
+        _gameStateManager = GetComponent<GameManager>();
         _uiManager = GetComponent<UIManager>();
-        _isUIActive = false;
     }
     
     //Mètode per setejar els estats del progrés de la història
@@ -67,27 +65,20 @@ public class StoryModeManager : MonoBehaviour
         }
         // Lògica addicional per quan es canvia d'estat
     }
-    
-    //Usem el mateix botó per entrar/sortir a Mode Exploració
-    public void ToggleUI()
-    {
-        if (!_isUIActive)
-            EnterStoryMode();
-        else if (_isUIActive)
-            ExitStoryMode();
-    }
 
     // Mètode per entrar a GameState StoryMode
-    private void EnterStoryMode()
+    public  void StoryModeButton()
     {
-        _gameStateManager.SetState(GameState.StoryMode);
-        _isUIActive = true;
-    }
-
-    // Mètode per sortir de  GameState StoryMode i tornar a Exploració
-    private void ExitStoryMode()
-    {
-        _gameStateManager.SetState(GameState.Navigation);
-        _isUIActive = false;
+            if (_gameStateManager.CurrentState != GameState.StoryMode)
+            {
+                _uiManager.GameStateSwitcherUI(GameState.StoryMode);
+                Time.timeScale = 0f;
+            }
+            else if (_gameStateManager.CurrentState == GameState.StoryMode)
+            {
+                _uiManager.GameStateSwitcherUI(GameState.Navigation);
+                Time.timeScale = 1f;
+            }
+            else return;
     }
 }

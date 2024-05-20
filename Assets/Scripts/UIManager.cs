@@ -12,11 +12,11 @@ public class UIManager : MonoBehaviour
     public GameObject storyModeUI;
     public GameObject[] storyModeStates;
 
-    GameStateManager _gameStateManager; //Variable per controlar els GameStates del joc
+    GameManager _gameStateManager; //Variable per controlar els GameStates del joc
     
     private void Awake()
     {
-        _gameStateManager = GetComponent<GameStateManager>(); //Assignem component
+        _gameStateManager = GetComponent<GameManager>(); //Assignem component
         
         if (storyModeUI != null)
         {
@@ -36,34 +36,49 @@ public class UIManager : MonoBehaviour
     }
 
     // Canvi de UI segons estat
-    public void GameStateSwitcherUI()
+    public void GameStateSwitcherUI(GameState gameState)
     {
         if (_gameStateManager == null) return;
 
-        // Tots els UI elements desactivats per defecte
-        explorationUI.SetActive(false);
-        navigationUI.SetActive(false);
-        inventoryUI.SetActive(false);
-        puzzleUI.SetActive(false);
-        storyModeUI.SetActive(false);
+        _gameStateManager.SetState(gameState);
 
         // Activa les diferents UI segons GameState
-        switch (_gameStateManager.CurrentState)
+        switch (gameState)
         {
             case GameState.Navigation:
                 navigationUI.SetActive(true);
+                explorationUI.SetActive(false);
+                inventoryUI.SetActive(false);
+                puzzleUI.SetActive(false);
+                storyModeUI.SetActive(false);
                 break;
             case GameState.Exploration:
                 explorationUI.SetActive(true);
+                navigationUI.SetActive(false);
+                inventoryUI.SetActive(false);
+                puzzleUI.SetActive(false);
+                storyModeUI.SetActive(false);
                 break;
             case GameState.Inventory:
                 inventoryUI.SetActive(true);
+                explorationUI.SetActive(false);
+                navigationUI.SetActive(false);
+                puzzleUI.SetActive(false);
+                storyModeUI.SetActive(false);
                 break;
             case GameState.Puzzle:
                 puzzleUI.SetActive(true);
+                explorationUI.SetActive(false);
+                navigationUI.SetActive(false);
+                inventoryUI.SetActive(false);
+                storyModeUI.SetActive(false);
                 break;
             case GameState.StoryMode:
                 storyModeUI.SetActive(true);
+                explorationUI.SetActive(false);
+                navigationUI.SetActive(false);
+                inventoryUI.SetActive(false);
+                puzzleUI.SetActive(false);
                 break;
         }
     }

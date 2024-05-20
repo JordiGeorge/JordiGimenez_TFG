@@ -10,7 +10,7 @@ public enum GameState
     StoryMode
 }
 
-public class GameStateManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private GameState currentState;
@@ -39,12 +39,11 @@ public class GameStateManager : MonoBehaviour
         uiManager = GetComponent<UIManager>();
         storyManager = GetComponent<StoryModeManager>();
         developUI = GetComponent<DevelopUIManager>();
-        SetState(GameState.StoryMode);
     }
 
     void Start()
     {
-        
+        uiManager.GameStateSwitcherUI(GameState.StoryMode);
         storyManager.SetStoryState(StoryState.Introduction);
     }
     
@@ -52,7 +51,6 @@ public class GameStateManager : MonoBehaviour
     void Update()
     {
         developUI.InfoDevelopUI();
-        uiManager.GameStateSwitcherUI();
 
         if (Input.GetKey(KeyCode.Escape))
         {

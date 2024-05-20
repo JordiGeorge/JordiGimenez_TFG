@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class NavigationModeManager : MonoBehaviour
 {
-    private GameStateManager _gameStateManager; //Variable per controlar els GameStates del joc
+    private GameManager _gameStateManager; //Variable per controlar els GameStates del joc
     private StoryModeManager _storyModeManager; //Variable per controlar els StoryStates del joc
     
     public List<CinemachineVirtualCamera> cameras; //LListat de Càmeres virtuales
@@ -29,7 +29,7 @@ public class NavigationModeManager : MonoBehaviour
     private void Awake()
     {
         //Busquem i assignem component GameStateManager i StoryModeManager
-        _gameStateManager = FindObjectOfType<GameStateManager>();
+        _gameStateManager = FindObjectOfType<GameManager>();
         _storyModeManager = FindObjectOfType<StoryModeManager>();
                 
         _navigationUI_down = cameraDownUI.GetComponent<Image>();
@@ -40,7 +40,6 @@ public class NavigationModeManager : MonoBehaviour
 
     void Start()
     {
-        _gameStateManager.SetState(GameState.Navigation);
         // La primera càmera es índex 0
         SwitchCamera(0);
     }

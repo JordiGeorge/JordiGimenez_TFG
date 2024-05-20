@@ -4,8 +4,9 @@ using TMPro;
 public class DevelopUIManager : MonoBehaviour
 {
     //Variable de GameState per poder controlar els stats del joc 
-    private GameStateManager _gameStateManager;
+    private GameManager _gameStateManager;
     private StoryModeManager _storyStateManager;
+    private UIManager _uiManager;
     
     public GameObject devGameStateUI;
     public GameObject devStoryStateUI;
@@ -21,8 +22,9 @@ public class DevelopUIManager : MonoBehaviour
     
     private void Awake()
     {
-        _gameStateManager = GetComponent<GameStateManager>();
+        _gameStateManager = GetComponent<GameManager>();
         _storyStateManager = GetComponent<StoryModeManager>();
+        _uiManager = GetComponent<UIManager>();
     }
 
     void Start()
@@ -35,7 +37,6 @@ public class DevelopUIManager : MonoBehaviour
         
         devLocationTMP = devLocationUI.GetComponent<TextMeshProUGUI>();
         devLocationTMP.text = locationText;
-        
     }
     
     public void InfoDevelopUI()

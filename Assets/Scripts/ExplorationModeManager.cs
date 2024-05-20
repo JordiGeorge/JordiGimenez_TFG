@@ -3,7 +3,8 @@ using UnityEngine;
 public class ExplorationModeManager : MonoBehaviour
 {
     private StoryState _currentStoryState;
-    private GameStateManager _gameStateManager; //Variable per controlar estats del joc
+    private GameManager _gameStateManager; //Variable per controlar estats del joc
+    private UIManager _uiManager;
     private bool _isUIActive;
     
     public ItemPickup[] items; //Variable Accés a item per a mètode Pickup
@@ -12,43 +13,24 @@ public class ExplorationModeManager : MonoBehaviour
     {
         //Busquem i assignem els components a variables
         _isUIActive = false;
-        _gameStateManager = GetComponent<GameStateManager>();
+        _gameStateManager = GetComponent<GameManager>();
+        _uiManager = GetComponent<UIManager>();
         items = FindObjectsOfType<ItemPickup>();
     }
     
-    //Usem el mateix botó per entrar/sortir a Mode Exploració
-    public void ToggleUI()
+    // Mètode per entrar a GameState ExplorationMode
+    public  void ExplorationModeButton()
     {
-        if (!_isUIActive)
-            EnterExplorationMode();
-        else if (_isUIActive)
-            ExitExplorationMode();
-    }
-    
-    // Mètode per entrar a GameState Exploració
-    private void EnterExplorationMode()
-    {
-        _gameStateManager.SetState(GameState.Exploration);
-        
-        foreach (var item in items)
+        if (_gameStateManager.CurrentState != GameState.Exploration)
         {
-            item.GetComponent<ItemPickup>().enabled = true;
-            item.isExplorationMode = true;
+            _uiManager.GameStateSwitcherUI(GameState.Exploration);
+            Time.timeScale = 0f;
         }
-        _isUIActive = true;
-       
-    }
-
-    // Mètode per sortir de  GameState i tornar a Navegació
-    private void ExitExplorationMode()
-    {
-        _gameStateManager.SetState(GameState.Navigation);
-        
-        foreach (var item in items)
+        else if (_gameStateManager.CurrentState == GameState.Exploration)
         {
-            item.GetComponent<ItemPickup>().enabled = false;
-            item.isExplorationMode = false;
+            _uiManager.GameStateSwitcherUI(GameState.Navigation);
+            Time.timeScale = 1f;
         }
-        _isUIActive = false;
+        else return;
     }
 }
