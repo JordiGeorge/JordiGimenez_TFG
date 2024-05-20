@@ -1841,13 +1841,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 153051340}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5bdb91fd821a44a91a3a0e7912e61baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 444804380ba29448eabdf04b4fa93528, type: 2}
-  isExplorationMode: 0
 --- !u!1 &172944659
 GameObject:
   m_ObjectHideFlags: 0
@@ -28131,7 +28130,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 67f24f3cd45f04be78d0efb9f2787807, type: 2}
-  isExplorationMode: 0
 --- !u!135 &2129493854
 SphereCollider:
   m_ObjectHideFlags: 0
