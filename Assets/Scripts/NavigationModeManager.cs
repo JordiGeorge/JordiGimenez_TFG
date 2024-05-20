@@ -29,8 +29,8 @@ public class NavigationModeManager : MonoBehaviour
     private void Awake()
     {
         //Busquem i assignem component GameStateManager i StoryModeManager
-        _gameStateManager = FindObjectOfType<GameManager>();
-        _storyModeManager = FindObjectOfType<StoryModeManager>();
+        _gameStateManager = GetComponent<GameManager>();
+        _storyModeManager = GetComponent<StoryModeManager>();
                 
         _navigationUI_down = cameraDownUI.GetComponent<Image>();
         _navigationUI_up = cameraUpUI.GetComponent<Image>();
