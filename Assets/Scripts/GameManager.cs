@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Enumeració dels diferents estats del joc
 public enum GameState
@@ -50,12 +51,19 @@ public class GameManager : MonoBehaviour
     // Actualització d'estats
     void Update()
     {
-        developUI.InfoDevelopUI();
+        if (developUI != null)
+            developUI.InfoDevelopUI();
 
         if (Input.GetKey(KeyCode.Escape))
         {
             QuitGame();
         }
+    }
+    
+    // Method to load a scene by build index
+    public void LoadSceneByIndex(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
     }
     
     //Tanca aplicació a editor i a Build
