@@ -11,7 +11,7 @@ public class SequentialStoryMode : MonoBehaviour
     public TextMeshProUGUI text3; // TextMeshPro per al segon text
     public Button button; // Botó
 
-    void Start()
+    void Awake()
     {
         // Textos i botó desactivats a l'inici
         text1.gameObject.SetActive(false);
