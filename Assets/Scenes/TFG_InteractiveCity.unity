@@ -5433,7 +5433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &470793252
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19038,6 +19038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52cf2501e11c4e1f851c51618e165f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  quickPanel: {fileID: 470793251}
   navigationUI: {fileID: 1457520278}
   explorationUI: {fileID: 1855019466}
   inventoryUI: {fileID: 287994597}

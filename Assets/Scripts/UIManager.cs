@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     //Variables per a assinar els diferents Canvas UI  a l'editor
+    public GameObject quickPanel;
     public GameObject navigationUI;
     public GameObject explorationUI;
     public GameObject inventoryUI;
@@ -46,6 +47,7 @@ public class UIManager : MonoBehaviour
         switch (gameState)
         {
             case GameState.Navigation:
+                quickPanel.SetActive(true);
                 navigationUI.SetActive(true);
                 explorationUI.SetActive(false);
                 inventoryUI.SetActive(false);
@@ -53,6 +55,7 @@ public class UIManager : MonoBehaviour
                 storyModeUI.SetActive(false);
                 break;
             case GameState.Exploration:
+                quickPanel.SetActive(true);
                 explorationUI.SetActive(true);
                 navigationUI.SetActive(false);
                 inventoryUI.SetActive(false);
@@ -60,6 +63,7 @@ public class UIManager : MonoBehaviour
                 storyModeUI.SetActive(false);
                 break;
             case GameState.Inventory:
+                quickPanel.SetActive(true);
                 inventoryUI.SetActive(true);
                 explorationUI.SetActive(false);
                 navigationUI.SetActive(false);
@@ -67,6 +71,7 @@ public class UIManager : MonoBehaviour
                 storyModeUI.SetActive(false);
                 break;
             case GameState.Puzzle:
+                quickPanel.SetActive(true);
                 puzzleUI.SetActive(true);
                 explorationUI.SetActive(false);
                 navigationUI.SetActive(false);
@@ -74,6 +79,7 @@ public class UIManager : MonoBehaviour
                 storyModeUI.SetActive(false);
                 break;
             case GameState.StoryMode:
+                quickPanel.SetActive(false);
                 storyModeUI.SetActive(true);
                 explorationUI.SetActive(false);
                 navigationUI.SetActive(false);

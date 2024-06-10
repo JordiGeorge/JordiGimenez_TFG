@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    // Method to load a scene by build index
+    // Mètode per carregar l'escena per build index
     public void LoadSceneByIndex(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
