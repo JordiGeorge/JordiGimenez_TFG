@@ -4,10 +4,12 @@ public enum MenuIndex
 {
     Profile,
     Inventory,
-    Mission
+    Mission,
+    ResumeGame,
+    ExitGame
 }
 
-public class MenuInventoryManager : MonoBehaviour
+public class MenuManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] infoMenu;
@@ -54,9 +56,9 @@ public class MenuInventoryManager : MonoBehaviour
     {
         SetState((MenuIndex)index);
 
-        if (_gameStateManager.CurrentState != GameState.Inventory)
+        if (_gameStateManager.CurrentState != GameState.MenuInventory)
         {
-            _uiManager.GameStateSwitcherUI(GameState.Inventory);
+            _uiManager.GameStateSwitcherUI(GameState.MenuInventory);
             
             Time.timeScale = 0f;
 
@@ -70,14 +72,14 @@ public class MenuInventoryManager : MonoBehaviour
                     break;
                 case MenuIndex.Inventory:
                     // Lògica per al segon GameObject
-                    _uiManager.GameStateSwitcherUI(GameState.Inventory);
+                    _uiManager.GameStateSwitcherUI(GameState.MenuInventory);
                     infoMenu[0].SetActive(false);
                     infoMenu[1].SetActive(true);
                     infoMenu[2].SetActive(false);
                     break;
                 case MenuIndex.Mission:
                     // Lògica per al tercer GameObject
-                    _uiManager.GameStateSwitcherUI(GameState.Inventory);
+                    _uiManager.GameStateSwitcherUI(GameState.MenuInventory);
                     infoMenu[0].SetActive(false);
                     infoMenu[1].SetActive(false);
                     infoMenu[2].SetActive(true);
@@ -87,34 +89,62 @@ public class MenuInventoryManager : MonoBehaviour
                     break;
             }
         }
-        else if (_gameStateManager.CurrentState == GameState.Inventory)
+        else if (_gameStateManager.CurrentState == GameState.MenuInventory)
         {
             if (index == 0)
             {
                 infoMenu[0].SetActive(true);
                 infoMenu[1].SetActive(false);
                 infoMenu[2].SetActive(false);
-                _uiManager.GameStateSwitcherUI(GameState.Inventory);
+                _uiManager.GameStateSwitcherUI(GameState.MenuInventory);
             }
             else if (index == 1)
             {
                 infoMenu[0].SetActive(false);
                 infoMenu[1].SetActive(true);
                 infoMenu[2].SetActive(false);
-                _uiManager.GameStateSwitcherUI(GameState.Inventory);
+                _uiManager.GameStateSwitcherUI(GameState.MenuInventory);
             }
             else if (index == 2)
             {
                 infoMenu[0].SetActive(false);
                 infoMenu[1].SetActive(false);
                 infoMenu[2].SetActive(true);
-                _uiManager.GameStateSwitcherUI(GameState.Inventory);
+                _uiManager.GameStateSwitcherUI(GameState.MenuInventory);
             }
             else
             {
                 _uiManager.GameStateSwitcherUI(GameState.Navigation);
                 Time.timeScale = 1f;
             }
+        }
+    }
+    public void MenuExitButton(int index)
+    {
+        SetState((MenuIndex)index);
+
+        if (_gameStateManager.CurrentState != GameState.ExitMenu)
+        {
+            _uiManager.GameStateSwitcherUI(GameState.ExitMenu);
+            
+            Time.timeScale = 0f;
+
+            switch (CurrentIndex)
+            {
+                case MenuIndex.ResumeGame:
+                    // Lògica per al primer GameObject a InfoMenu
+                    infoMenu[0].SetActive(true);
+                    infoMenu[1].SetActive(false);
+                    break;
+                default:
+                    Debug.LogError("Índex invàlid");
+                    break;
+            }
+        }
+        else 
+        {
+            _uiManager.GameStateSwitcherUI(GameState.Navigation);
+            Time.timeScale = 1f;
         }
     }
 }

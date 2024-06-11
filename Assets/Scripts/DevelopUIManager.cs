@@ -94,7 +94,7 @@ public class DevelopUIManager : MonoBehaviour
                 gameStateText = "Mode Exploració";
                 devGameStateTMP.text = gameStateText;
                 break;
-            case GameState.Inventory:
+            case GameState.MenuInventory:
                 gameStateText = "Mode Menu/Inventari";
                 devGameStateTMP.text = gameStateText;
                 break;

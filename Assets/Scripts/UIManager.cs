@@ -5,10 +5,13 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     //Variables per a assinar els diferents Canvas UI  a l'editor
-    public GameObject quickPanel;
+    public GameObject gameStatesHUD;
+    public GameObject menuInventoryHUD;
+    public GameObject exitHUD;
     public GameObject navigationUI;
     public GameObject explorationUI;
-    public GameObject inventoryUI;
+    public GameObject menuInventoryUI;
+    public GameObject menuExitUI;
     public GameObject puzzleUI;
     public GameObject storyModeUI;
     public GameObject[] storyModeStates;
@@ -32,7 +35,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("storyModeUI no esta assignat!"); //Control
+            Debug.LogError("storyModeUI no esta assignat!"); // Control
         }
     }
 
@@ -47,43 +50,69 @@ public class UIManager : MonoBehaviour
         switch (gameState)
         {
             case GameState.Navigation:
-                quickPanel.SetActive(true);
+                gameStatesHUD.SetActive(true);
+                menuInventoryHUD.SetActive(true);
+                exitHUD.SetActive(true);
+                menuExitUI.SetActive(false);
                 navigationUI.SetActive(true);
                 explorationUI.SetActive(false);
-                inventoryUI.SetActive(false);
+                menuInventoryUI.SetActive(false);
                 puzzleUI.SetActive(false);
                 storyModeUI.SetActive(false);
                 break;
             case GameState.Exploration:
-                quickPanel.SetActive(true);
+                gameStatesHUD.SetActive(true);
+                menuInventoryHUD.SetActive(true);
+                exitHUD.SetActive(true);
+                menuExitUI.SetActive(false);
                 explorationUI.SetActive(true);
                 navigationUI.SetActive(false);
-                inventoryUI.SetActive(false);
+                menuInventoryUI.SetActive(false);
                 puzzleUI.SetActive(false);
                 storyModeUI.SetActive(false);
                 break;
-            case GameState.Inventory:
-                quickPanel.SetActive(true);
-                inventoryUI.SetActive(true);
+            case GameState.MenuInventory:
+                gameStatesHUD.SetActive(true);
+                menuInventoryHUD.SetActive(true);
+                exitHUD.SetActive(false);
+                menuExitUI.SetActive(false);
+                menuInventoryUI.SetActive(true);
+                explorationUI.SetActive(false);
+                navigationUI.SetActive(false);
+                puzzleUI.SetActive(false);
+                storyModeUI.SetActive(false);
+                break;
+            case GameState.ExitMenu:
+                gameStatesHUD.SetActive(false);
+                menuInventoryHUD.SetActive(false);
+                exitHUD.SetActive(false);
+                menuExitUI.SetActive(true);
+                menuInventoryUI.SetActive(false);
                 explorationUI.SetActive(false);
                 navigationUI.SetActive(false);
                 puzzleUI.SetActive(false);
                 storyModeUI.SetActive(false);
                 break;
             case GameState.Puzzle:
-                quickPanel.SetActive(true);
+                gameStatesHUD.SetActive(true);
+                menuInventoryHUD.SetActive(true);
+                exitHUD.SetActive(true);
+                menuExitUI.SetActive(false);
                 puzzleUI.SetActive(true);
                 explorationUI.SetActive(false);
                 navigationUI.SetActive(false);
-                inventoryUI.SetActive(false);
+                menuInventoryUI.SetActive(false);
                 storyModeUI.SetActive(false);
                 break;
             case GameState.StoryMode:
-                quickPanel.SetActive(false);
+                gameStatesHUD.SetActive(false);
+                menuInventoryHUD.SetActive(false);
+                exitHUD.SetActive(false);
+                menuExitUI.SetActive(false);
                 storyModeUI.SetActive(true);
                 explorationUI.SetActive(false);
                 navigationUI.SetActive(false);
-                inventoryUI.SetActive(false);
+                menuInventoryUI.SetActive(false);
                 puzzleUI.SetActive(false);
                 break;
         }

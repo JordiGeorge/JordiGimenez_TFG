@@ -6,7 +6,8 @@ public enum GameState
 {
     Navigation,
     Exploration,
-    Inventory,
+    MenuInventory,
+    ExitMenu,
     Puzzle,
     StoryMode
 }
