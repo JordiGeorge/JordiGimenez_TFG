@@ -126,20 +126,7 @@ public class MenuManager : MonoBehaviour
         if (_gameStateManager.CurrentState != GameState.ExitMenu)
         {
             _uiManager.GameStateSwitcherUI(GameState.ExitMenu);
-            
             Time.timeScale = 0f;
-
-            switch (CurrentIndex)
-            {
-                case MenuIndex.ResumeGame:
-                    // Lògica per al primer GameObject a InfoMenu
-                    infoMenu[0].SetActive(true);
-                    infoMenu[1].SetActive(false);
-                    break;
-                default:
-                    Debug.LogError("Índex invàlid");
-                    break;
-            }
         }
         else 
         {

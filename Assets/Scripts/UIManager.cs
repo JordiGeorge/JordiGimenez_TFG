@@ -72,7 +72,7 @@ public class UIManager : MonoBehaviour
                 storyModeUI.SetActive(false);
                 break;
             case GameState.MenuInventory:
-                gameStatesHUD.SetActive(true);
+                gameStatesHUD.SetActive(false);
                 menuInventoryHUD.SetActive(true);
                 exitHUD.SetActive(false);
                 menuExitUI.SetActive(false);
