@@ -58,7 +58,7 @@ public class ItemPickup : MonoBehaviour
                 _spriteRenderer.color = _mouseOverColor;
             }
             
-            _textToChange.text = item.name;
+            _textToChange.text = gameObject.name;
         }
     }
 
