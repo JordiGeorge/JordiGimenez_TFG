@@ -3,7 +3,72 @@ guid: a7a85b827167e40fb86a59c7cae06423
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Box_01_mat
+    second: {fileID: 2100000, guid: 5b57858f4dc284f05887b84cd13a7977, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Box_02_mat
+    second: {fileID: 2100000, guid: 9f6e9d09f14084ab4af55877db1596ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Box_03_mat
+    second: {fileID: 2100000, guid: 7b523a1ce8bb240b1962c818b7e5640f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Box_04_mat
+    second: {fileID: 2100000, guid: 5bdb18f1c4f0344db835aecb335b1a84, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Box_05_mat
+    second: {fileID: 2100000, guid: 92d7f40298af94cfd90f09d50d60b52c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Box_Connections_mat
+    second: {fileID: 2100000, guid: 78324765187d645a0a2226f2ab5fe8e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cable_01_mat
+    second: {fileID: 2100000, guid: cb0b8e0cfb97645ecb3c5f6f9e7036d5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cable_02_mat
+    second: {fileID: 2100000, guid: d354b27f891da4abab647d9cb9a23b12, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cable_03_mat
+    second: {fileID: 2100000, guid: 46d98ebcc580847b7b3d73b14fdc4cb5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cable_04_mat
+    second: {fileID: 2100000, guid: 9ecb67b763d0847d5a0b7bfa1187a9ba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cable_05_mat
+    second: {fileID: 2100000, guid: b7fc29245dac14d5a8c67da496476d21, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cable_06_mat
+    second: {fileID: 2100000, guid: 1436cbc3555ab4c0f9899a98994e8b25, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pipe_mat
+    second: {fileID: 2100000, guid: 89e2e20924be24109acddec04add0676, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -90,7 +155,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.099999994
+    globalScale: 10
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
