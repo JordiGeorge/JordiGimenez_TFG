@@ -17318,7 +17318,7 @@ GameObject:
   - component: {fileID: 926316733}
   - component: {fileID: 926316732}
   m_Layer: 5
-  m_Name: ElectricBox (Image)
+  m_Name: DoorCardDevice (Image)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17363,7 +17363,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 91b95df4f03554bcebc4c34920de9a68, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ac23f147c59fa4242a76fa3965263838, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -20341,7 +20341,7 @@ GameObject:
   - component: {fileID: 1245935362}
   - component: {fileID: 1245935361}
   m_Layer: 5
-  m_Name: ElectricBox_Text (TMP)
+  m_Name: DoorCardDevice_Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20386,11 +20386,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Davant meu, un carrer\xF3 tan fosc que semblava un forat negre, segurament
-    un regalet de la darrera tempesta que va fer de les seves amb l'electricitat.
-    Podria trucar a l'electricista i esperar pacientment una mort lenta i dolorosa.
-    Potser \xE9s l'hora de fer de sabueso i trobar la manera d'arreglar aquest embolic.
-    Merda! No em paguen prou per aix\xF2.\n"
+  m_text: 'Al costat de la porta es pot apreciar un dispositiu de targetes (sense
+    corrent)
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7d36b58cafbad430e8eebade4ebd5880, type: 2}
   m_sharedMaterial: {fileID: -8946124442542365621, guid: 7d36b58cafbad430e8eebade4ebd5880,
