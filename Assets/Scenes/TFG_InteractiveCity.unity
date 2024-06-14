@@ -305,7 +305,7 @@ MonoBehaviour:
     LensShift: {x: 0, y: 0}
     GateFit: 2
     FocusDistance: 10
-    m_SensorSize: {x: 1, y: 1}
+    m_SensorSize: {x: 36, y: 24}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1859,6 +1859,89 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 143881363}
   m_CullTransparentMesh: 1
+--- !u!1001 &149626475
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1710578858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: a4976ff63951a184ebb6bca52643c545,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a4976ff63951a184ebb6bca52643c545,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.011635987
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a4976ff63951a184ebb6bca52643c545,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.008811699
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a4976ff63951a184ebb6bca52643c545,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.775
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a4976ff63951a184ebb6bca52643c545,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.402
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a4976ff63951a184ebb6bca52643c545,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.997
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a4976ff63951a184ebb6bca52643c545,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.1791766
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a4976ff63951a184ebb6bca52643c545,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a4976ff63951a184ebb6bca52643c545,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.9838169
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a4976ff63951a184ebb6bca52643c545,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a4976ff63951a184ebb6bca52643c545,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a4976ff63951a184ebb6bca52643c545,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -159.356
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a4976ff63951a184ebb6bca52643c545,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a4976ff63951a184ebb6bca52643c545,
+        type: 3}
+      propertyPath: m_Name
+      value: Alley_Stairs (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a4976ff63951a184ebb6bca52643c545, type: 3}
 --- !u!1 &153051340
 GameObject:
   m_ObjectHideFlags: 0
@@ -2649,7 +2732,7 @@ MonoBehaviour:
     LensShift: {x: 0, y: 0}
     GateFit: 2
     FocusDistance: 10
-    m_SensorSize: {x: 1, y: 1}
+    m_SensorSize: {x: 36, y: 24}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2996,22 +3079,22 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 216328317}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 350
-    m_Right: 500
+    m_Left: 200
+    m_Right: 200
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
   m_Spacing: 10
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
@@ -3181,10 +3264,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 216328322}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 81.9, y: -540}
-  m_SizeDelta: {x: 1024, y: 1024}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &229873818
 MonoBehaviour:
@@ -3713,6 +3796,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!4 &293554049 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a4976ff63951a184ebb6bca52643c545,
+    type: 3}
+  m_PrefabInstance: {fileID: 149626475}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &298314252
 GameObject:
   m_ObjectHideFlags: 3
@@ -16076,7 +16165,7 @@ GameObject:
   - component: {fileID: 819827660}
   - component: {fileID: 819827659}
   m_Layer: 5
-  m_Name: ElectricBox_Text (TMP)
+  m_Name: Library Dialog_Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16096,10 +16185,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 216328322}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1344, y: -540}
-  m_SizeDelta: {x: 738, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &819827659
 MonoBehaviour:
@@ -25174,6 +25263,7 @@ Transform:
   - {fileID: 1955236611}
   - {fileID: 1015942002}
   - {fileID: 930618357}
+  - {fileID: 293554049}
   - {fileID: 554300480}
   - {fileID: 518873821}
   - {fileID: 871951721}
