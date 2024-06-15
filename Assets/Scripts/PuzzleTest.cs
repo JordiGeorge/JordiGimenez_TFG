@@ -52,6 +52,7 @@ public class PuzzleTest : MonoBehaviour
                 _spriteRenderer.color = _mouseOverColor;
             }
         
+        if(_textToChange != null)
             _textToChange.text = gameObject.name;
         
     }
@@ -61,12 +62,15 @@ public class PuzzleTest : MonoBehaviour
             if (_meshRenderer != null)
             {
                 _meshRenderer.material.color = _originalColor;
-                _textToChange.text = null; //Reset de la UI d'exploracio
+                
+                if(_textToChange != null)
+                    _textToChange.text = null; //Reset de la UI d'exploracio
             }
             else if (_spriteRenderer != null)
             {
                 _spriteRenderer.color = _originalColor;
-                _textToChange.text = null;//Reset de la UI d'exploracio
+                if(_textToChange != null)
+                    _textToChange.text = null;//Reset de la UI d'exploracio
             }
     }
 
